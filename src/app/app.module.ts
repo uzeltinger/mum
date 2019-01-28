@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { HeaderComponent } from './components/template/header/header.component';
 import { SlideHomeComponent } from './components/modulos/slide-home/slide-home.component';
+import { HistoriaComponent } from './components/historia/historia.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SlideHomeComponent } from './components/modulos/slide-home/slide-home.c
     SlideHomeComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    HistoriaComponent
   ],
   imports: [
     BrowserModule, RouterModule, AppRoutingModule, BrowserAnimationsModule, GoTopButtonModule,   
