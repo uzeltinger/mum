@@ -1,0 +1,77 @@
+[
+    {
+        "id": 0,
+        "imagen": {
+            "id": 1,
+            "nombre": "nombre-1920-300.jpg",
+            "alto": 300,
+            "ancho": 1920,
+            "urlImagen":"/media/images/slide-home/slide-home.jpg"
+        },
+        "imagenMobile": {
+            "id": 1,
+            "nombre": "nombre-1000-300.jpg",
+            "alto": 300,
+            "ancho": 1000,
+            "urlImagen": "/media/images/slide-home/slide-home-mobile.jpg"
+        },
+        "titulo": "¡BIENVENIDOS AL MUSEO MOLET!",
+        "subtitulo": "Un homenaje a los pioneros, que con su esfuerzo y sabiduría, elevaron la calidad de vida de los cordobeses.",
+        "url": null,
+        "urlInterna":"/",
+        "target": "_blank",
+        "habilitado": true,
+        "posicion": 1,        
+        "descripcion": null
+    },
+    {
+        "id": 0,
+        "imagen": {
+            "id": 1,
+            "nombre": "nombre-1920-300.jpg",
+            "alto": 300,
+            "ancho": 1920,
+            "urlImagen":"/media/images/slide-home/slide-home.jpg"
+        },
+        "imagenMobile": {
+            "id": 1,
+            "nombre": "nombre-1000-300.jpg",
+            "alto": 300,
+            "ancho": 1000,
+            "urlImagen": "/media/images/slide-home/slide-home-mobile.jpg"
+        },
+        "titulo": "¡BIENVENIDOS AL MUSEO MOLET!",
+        "subtitulo": "Un homenaje a los pioneros, que con su esfuerzo y sabiduría, elevaron la calidad de vida de los cordobeses.",
+        "url": null,
+        "urlInterna":"/",
+        "target": "_blank",
+        "habilitado": true,
+        "posicion": 1,        
+        "descripcion": null
+    },
+    {
+        "id": 0,
+        "imagen": {
+            "id": 1,
+            "nombre": "nombre-1920-300.jpg",
+            "alto": 300,
+            "ancho": 1920,
+            "urlImagen":"/media/images/slide-home/slide-home.jpg"
+        },
+        "imagenMobile": {
+            "id": 1,
+            "nombre": "nombre-1000-300.jpg",
+            "alto": 300,
+            "ancho": 1000,
+            "urlImagen": "/media/images/slide-home/slide-home-mobile.jpg"
+        },
+        "titulo": "¡BIENVENIDOS AL MUSEO MOLET!",
+        "subtitulo": "Un homenaje a los pioneros, que con su esfuerzo y sabiduría, elevaron la calidad de vida de los cordobeses.",
+        "url": null,
+        "urlInterna":"/",
+        "target": "_blank",
+        "habilitado": true,
+        "posicion": 1,        
+        "descripcion": null
+    }
+]

@@ -1,0 +1,40 @@
+<section class="perfil-carousel perfil-{{perfil}}">
+    <div id="carouselPerfil" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li  *ngFor="let slide of slideHome;index as i" data-target="#carouselPerfil" data-slide-to="i" [ngClass]="{'active': i==0}"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+
+            <div class="carousel-item" *ngFor="let slide of slideHome;index as i" [ngClass]="{'active': i==0}">
+                <div class="slide-fondo" [ngStyle]="{'background-image':'url(' + slide.urlImagen + ')'}"></div>
+                <div class="carousel-caption">
+                    <h2>{{slide.titulo}}</h2><p class="d-none d-md-block">{{slide.subtitulo}}</p>
+                    <div *ngIf="slide.url!=null" class="leermas-container">
+                        <a target="_blank" href="{{slide.url}}" class="btn leer-mas btn-ripple">VER MÁS</a>
+                    </div> 
+                </div>
+            </div>
+
+          <!--
+            <div class="carousel-item">
+                <div class="slide-fondo slide-fondo-1"></div>
+                <div class="carousel-caption">
+                    <h2><span>DESCARGÁ NUESTRA APP EN FORMA GRATUITA EN GOOGLE PLAY</span></h2>
+                    <p class="d-none d-lg-block"><span>Fusce urna libero, auctor quis rutrum at, euismod eu enim. Sed
+                            et
+                            ex a massa congue commodo ac at mi.</span></p>
+                    <div class="leermas-container">
+                        <a routerLink="/aplicacion-movil" class="btn leer-mas btn-ripple">VER MÁS</a>
+                    </div>
+                </div>
+            </div>
+        -->
+        </div>
+        <a class="carousel-control carousel-control-prev" href="#carouselPerfil" role="button" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control carousel-control-next" href="#carouselPerfil" role="button" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </div>
+</section>

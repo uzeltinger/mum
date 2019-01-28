@@ -1,0 +1,21 @@
+.section.perfil-carousel .slide-fondo {
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+.carousel-caption h2 {
+    color: #fff;
+}
+.carousel-caption p {
+    color: #fff;
+}
+section.perfil-carousel .slide-fondo {
+    width: 100%;
+    height: 300px;
+  background-position-x: center;
+}
+.carousel-caption {
+    top: 30%;
+    max-width: 600px;
+    margin: auto;
+}

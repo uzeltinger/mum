@@ -1,0 +1,11 @@
+.home {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+.home .container .row {
+    padding: 2rem;
+}
+.coltexto {
+    padding: 1rem;
+}

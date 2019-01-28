@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+.epec-color-verde { color: #006D59!important;}
+.epec-color-azul { color: #035F75!important;}
+.epec-color-lila { color: #622180!important;}
+.epec-color-amarillo { color: #FABA00!important;}
+.epec-color-black {color: #000000!important;}
+.epec-bg-color-verde{ background-color: #006D59;}
+.epec-bg-color-azul{ background-color: #035F75;}
+.epec-bg-color-lila{ background-color: #622180;}
+.epec-bg-color-amarillo{ background-color: #FABA00;}
+
+body {
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: 'Rokkitt', 'arial';
+    font-size: 18px;
+    font-weight: 400;
+}
+.fabio {
+    color: red;
+}
