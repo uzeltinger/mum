@@ -1,0 +1,58 @@
+.contacto .header-background {
+    background: url('/assets/template/images/fondo-contacto.jpg');
+    padding: 2rem;
+}
+.fondo-blanco-para-compensar-altura {
+    background: #fff;
+}
+.contacto .contact-form {
+    background: #fff;
+    padding: 2rem;
+}
+
+
+/*  modal notify messages    */
+.modal-body .container .text-center i {
+    color: #006073;;
+}
+.modal-dialog.modal-notify .modal-header {
+    background: #065C71;
+}
+.modal-dialog.modal-notify .heading {
+    margin: 0;
+    padding: .3rem;
+    font-size: 1.15rem;
+    color: #fff;
+}
+button.btn-azul-epec, a.btn-azul-epec {
+    color: #fff!important;
+    background: #006073;
+    border: 1px solid #006073;
+    margin: 0;
+    font-size: .8rem;
+    margin-top: .2rem;
+    padding: .5rem 2rem;
+}
+
+@media (min-width: 576px){
+    section.register-success .modal-dialog {
+        max-width: 600px;
+    }
+}
+.modal-info.alert .modal-body .container .text-center i {
+    color: #730000;;
+}
+.confirmacion-de-pago div.text-center p {
+    text-align: left!important;
+}
+.confirmacion-de-pago .modal-dialog {
+    max-width: 800px!important;
+}
+.epec-bg-color-verde {
+    color: #fff!important;
+}
+@media (min-width: 992px){
+    .fondo-blanco-para-compensar-altura {
+        background: #fff;
+    }  
+}

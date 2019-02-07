@@ -1,0 +1,95 @@
+<section class="contacto">
+  <div class="header-background">
+    <div class="container container-fluid-nopadding">
+      <div class="row">
+        <div class="col-1 d-none d-lg-block"></div>
+        <div class="col-12 col-lg-4 fondo-blanco-para-compensar-altura">
+          <div class="contact-form">
+            <div class="header">
+              <h1 class="title epec-color-verde">CONTACTO</h1>
+            </div>
+            <div class="required-fields">
+              <small>*Campos requeridos</small>
+            </div>
+            <!--ngNoForm
+                      <form #myForm="ngForm" id="myForm" (ngSubmit)="onSubmit(myForm)" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">  -->
+            <form id="myForm" ngNativeValidate ngNoForm action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8"
+              method="POST">
+
+              <input type=hidden name="orgid" value="00Df40000037UNK">
+              <input type=hidden name="retURL" value="https://www.epec.com.ar/contacto/recibido">
+              <input type="hidden" id="subject" name="subject" class="form-control" value="Consulta desde la web">
+
+              <div class="inner-form">
+
+                <div class="md-form mt-0">
+                  <input type="text" id="00Nf400000SKbBY" name="00Nf400000SKbBY" class="form-control" required>
+                  <label for="00Nf400000SKbBY">Nombre</label>
+                </div>
+                <div class="md-form mt-3">
+                  <input type="text" id="00Nf400000SKbKx" name="00Nf400000SKbKx" class="form-control" required>
+                  <label for="00Nf400000SKbKx">Apellido</label>
+                </div>
+                <div class="md-form mt-3">
+                  <input type="email" id="contacto-email" name="email" class="form-control" required>
+                  <label for="contacto-email">E-mail</label>
+                </div>
+                <div class="md-form mt-3">
+                  <textarea type="text" id="description" name="description" class="form-control md-textarea" rows="0"
+                    required></textarea>
+                  <label for="description">Consulta</label>
+                </div>
+                <div class="md-form mt-3">
+                  <input class="btn btn-epec-color-verde mt-4 btn-block epec-bg-color-verde" type="submit" name="ENVIAR">
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+        <div class="col-1 d-none d-lg-block"></div>
+        <div class="col-12 col-lg-4">
+          <div class="contact-login">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="modal-info {{recibidoParams.sectioclass}}">
+  <div class="modal fade" id="modalrecibido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-md" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <p class="heading lead">{{recibidoParams.title}}</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">×</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container">
+            <div class="text-center">
+              <i *ngIf="recibidoParams.sectioclass==''" class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+              <i *ngIf="recibidoParams.sectioclass=='alert'" class="fa fa-exclamation-triangle fa-4x mb-3 animated rotateIn"></i>
+            </div>
+
+            <div class="text-center">
+
+              <p [innerHTML]="recibidoParams.text"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-azul-epec waves-effect" data-dismiss="modal" (click)="modalRecibidoCloseClicked()">{{recibidoParams.buttonText}}</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<a style="display: none" id="open-modal-recibido" data-toggle="modal" data-target="#modalrecibido">Popup</a>

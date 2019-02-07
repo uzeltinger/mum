@@ -1,11 +1,22 @@
-.home {
+.historia {
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 1rem;
 }
-.home .container .row {
+.historia .container .row {
     padding: 2rem;
 }
 .coltexto {
     padding: 1rem;
+}
+.row.v-center {
+    align-items: center;
+    height: 100%;
+}
+
+.border-green {
+    border-top: 4px solid #57AB4A;
+}
+.noppading {
+    padding: 0!important;;
 }
