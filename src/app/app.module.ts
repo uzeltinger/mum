@@ -13,6 +13,7 @@ import { HeaderComponent } from './components/template/header/header.component';
 import { SlideHomeComponent } from './components/modulos/slide-home/slide-home.component';
 import { HistoriaComponent } from './components/historia/historia.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { SalasComponent } from './components/salas/salas.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ContactoComponent } from './components/contacto/contacto.component';
     FooterComponent,
     HeaderComponent,
     HistoriaComponent,
-    ContactoComponent
+    ContactoComponent,
+    SalasComponent
   ],
   imports: [
     BrowserModule, RouterModule, AppRoutingModule, BrowserAnimationsModule, GoTopButtonModule,   

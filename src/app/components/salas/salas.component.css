@@ -1,0 +1,47 @@
+.salas {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+.salas .container .row {
+    padding: 2rem;
+}
+.coltexto {
+    padding: 1rem;
+}
+.row.v-center {
+    align-items: center;
+    height: 100%;
+}
+
+.border-green {
+    border-top: 4px solid #57AB4A;
+}
+.noppading {
+    padding: 0!important;;
+}
+.salas-menu {
+    display: flex!important;
+    flex-basis: auto;
+    flex-direction: row;
+}
+.salas-menu .navbar-nav{
+    flex-direction: row;
+}
+.salas-menu .navbar-nav li {
+
+padding-left: 8px;
+padding-right: 8px;
+}
+
+.salas-menu .navbar-nav a {
+font-size: 14px; 
+border-top: 4px solid #a39f9f;
+color: #000;
+}
+.salas-menu li.nav-item.active a{
+    border-top: 4px solid #57AB4A;
+}
+.col-image {
+    padding: 6px;
+}
