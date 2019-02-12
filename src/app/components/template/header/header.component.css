@@ -97,7 +97,7 @@ header .container-menu-all {
     -moz-box-shadow: 0 2px 10px rgba(50, 50, 50, 0.50);
     box-shadow: 0 2px 10px rgba(50, 50, 50, 0.50);
 }
-header nav.navbar-light {
+header nav.navbar-dark {
     background-color: #000000;
     z-index:9;
 }
