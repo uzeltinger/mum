@@ -15,6 +15,9 @@
     margin-right: .5rem;
     color: #999;
 }
+.row-distancias {
+    margin-top: 1rem;
+}
 .distancias .fa {
     margin-right: .5rem;
     color: #006D59;
@@ -90,6 +93,33 @@ margin-right: .3rem;
     bottom: 1rem;
     right: 1rem;
 }
+.div-boton-enviar {
+    width: 100%;
+    position: relative;
+    height: 80px;
+}
+.div-boton-enviar .btn-enviar {
+    right: 0;
+}
+.col-form-label {
+    padding-top: .375rem;
+    padding-bottom: .375rem;
+}
+.observaciones {
+    margin-top: 2.7rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*  modal notify messages    */
 .modal-body .container .text-center i {
     color: #006073;;
