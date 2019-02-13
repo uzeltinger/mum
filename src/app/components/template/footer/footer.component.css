@@ -1,3 +1,7 @@
+.footer {
+    font-family: Roboto,sans-serif;
+    font-size: 13px;
+}
 .footer .linea-horizontal img{    
     height: 6px;    
     width: 100%;

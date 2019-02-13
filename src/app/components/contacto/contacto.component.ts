@@ -1,5 +1,6 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { } from '@types/googlemaps';
 
 @Component({
   selector: 'app-contacto',
@@ -8,11 +9,18 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ContactoComponent implements OnInit {
 
+  @ViewChild('gmap') gmapElement: any;
+  map: google.maps.Map;
   ancla: string;
   recibidoParams = { 'title': '', 'text': '', 'buttonText': '', 'sectioclass': '' };
 
   constructor(private route: ActivatedRoute,
     private _elementRef: ElementRef) { }
+
+  latitude: any;
+  longitude: any;
+  iconImage = 'assets/template/images/marcador-epec-verde.png';
+  sowingMaps: boolean = true;
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
@@ -26,8 +34,38 @@ export class ContactoComponent implements OnInit {
         this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
       }
     });
+    this.cargarMapas();
   }
   modalRecibidoCloseClicked() {
 
   }
+
+  cargarMapas(){
+    this.loadMap();
+    this.sowingMaps = true;
+}
+
+  loadMap() {
+    let mapProp = {
+      center: new google.maps.LatLng(-31.39245, -64.167777),
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+
+    this.addMarker(new google.maps.LatLng(-31.39245, -64.167777), this.map, this.iconImage, 'EPEC');
+
+
+  }
+
+  addMarker(location_, map_, iconImage_, title_) {
+    let marker = new google.maps.Marker({
+      position: location_,
+      map: map_,
+      icon: iconImage_,
+      title: title_
+    });
+    return marker;
+  }
+
 }

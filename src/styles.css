@@ -8,6 +8,9 @@
 .epec-bg-color-lila{ background-color: #622180;}
 .epec-bg-color-amarillo{ background-color: #FABA00;}
 
+.epec-color-verde-claro {
+    color: #57AD4A;
+}
 body {
     /*font-family: 'Roboto', sans-serif;*/
     font-family: 'Rokkitt', 'arial';

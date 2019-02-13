@@ -1,65 +1,383 @@
 <section class="contacto">
-  <div class="header-background">
-    <div class="container container-fluid-nopadding">
-      <div class="row">
-        <div class="col-1 d-none d-lg-block"></div>
-        <div class="col-12 col-lg-4 fondo-blanco-para-compensar-altura">
-          <div class="contact-form">
-            <div class="header">
-              <h1 class="title epec-color-verde">CONTACTO</h1>
-            </div>
-            <div class="required-fields">
-              <small>*Campos requeridos</small>
-            </div>
-            <!--ngNoForm
-                      <form #myForm="ngForm" id="myForm" (ngSubmit)="onSubmit(myForm)" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">  -->
-            <form id="myForm" ngNativeValidate ngNoForm action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8"
-              method="POST">
-
-              <input type=hidden name="orgid" value="00Df40000037UNK">
-              <input type=hidden name="retURL" value="https://www.epec.com.ar/contacto/recibido">
-              <input type="hidden" id="subject" name="subject" class="form-control" value="Consulta desde la web">
-
-              <div class="inner-form">
-
-                <div class="md-form mt-0">
-                  <input type="text" id="00Nf400000SKbBY" name="00Nf400000SKbBY" class="form-control" required>
-                  <label for="00Nf400000SKbBY">Nombre</label>
-                </div>
-                <div class="md-form mt-3">
-                  <input type="text" id="00Nf400000SKbKx" name="00Nf400000SKbKx" class="form-control" required>
-                  <label for="00Nf400000SKbKx">Apellido</label>
-                </div>
-                <div class="md-form mt-3">
-                  <input type="email" id="contacto-email" name="email" class="form-control" required>
-                  <label for="contacto-email">E-mail</label>
-                </div>
-                <div class="md-form mt-3">
-                  <textarea type="text" id="description" name="description" class="form-control md-textarea" rows="0"
-                    required></textarea>
-                  <label for="description">Consulta</label>
-                </div>
-                <div class="md-form mt-3">
-                  <input class="btn btn-epec-color-verde mt-4 btn-block epec-bg-color-verde" type="submit" name="ENVIAR">
-                </div>
-              </div>
-
-            </form>
-
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>CONTACTO</h2>
+        <p>Para ponerse en contacto con los representantes del Museo Usina Molet puede llamar a los telefonos indicados
+          o bien llenar el formulario. También puede enviarnos un mail a <a class="epec-color-verde-claro"
+            href="mailto:museomolet@epec.com.ar">
+            museomolet@epec.com.ar</a>.
+        </p>
+        <div class="contact-info">
+          <h4 class="epec-color-verde-claro">MUSEO USINA MOLET</h4>
+          <p><span class="fa fa-map-marker"></span>Ruta prov. E55 km 22, Código Postal X5151XAI, a 1.700 m del Dique de
+            San Roque, camino La Calera.</p>
+          <p><span class="fa fa-phone"></span>Teléfono: 0351 4296036 (Administración EPEC - Córdoba Ciudad)</p>
+          <p><span class="fa fa-clock-o"></span>Horario: lunes a viernes, 08:30 a 14:30 h.</p>
+          <p><span class="fa fa-usd"></span>Entrada libre y gratuita.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <div class="mapa">
+          <div #gmap class="gmap1 show" id="gmap1">
+            <a *ngIf="!sowingMaps" class="btn btn-epec-color-verde epec-bg-color-verde" (click)="cargarMapas()">VER
+              MAPA</a>
           </div>
         </div>
-        <div class="col-1 d-none d-lg-block"></div>
-        <div class="col-12 col-lg-4">
-          <div class="contact-login">
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="distancias">
+          <h4 class="epec-color-verde-claro">DISTANCIAS</h4>
+          <p><span class="fa fa-map-marker"></span>Desde aeropuerto (45 min.) por Av. Ricardo Rojas y RP E55<br>
+            <a class="epec-color-verde-claro" href="">Ver en Google Maps</a></p>
+          <p><span class="fa fa-map-marker"></span>Desde Carlos Paz (25 min.)<br>
+            Sigue por Gral. Paz hacia Av. Libertad/RP14.<br>
+            Toma Av. San Martín/RN38, Av. España/RN20 y RP73 hacia RP E55.<br>
+            <a class="epec-color-verde-claro" href="">Ver en Google Maps</a></p>
+          <p><span class="fa fa-map-marker"></span>Desde terminal de ómnibus (49 min.)<br>
+            Accede a RN20 desde Av. Poeta Lugones y Av. Fuerza Aerea Argentina.<br>
+            Sigue por RN20 y RP73 hacia RP E55 en Santa María.<br>
+            <a class="epec-color-verde-claro" href="">Ver en Google Maps</a></p>
+          <p><span class="fa fa-map-marker"></span>Desde el centro de córdoba (49 min.)<br>
+            Accede a RN20 desde Julio A. Roca y Av. Fuerza Aerea Argentina.<br>
+            Sigue por RN20 y RP73 hacia RP E55 en Santa María.<br>
+            <a class="epec-color-verde-claro" href="">Ver en Google Maps</a></p>
+        </div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-12">
+        <div class="visitas-guiadas">
+          <h4 class="epec-color-verde-claro">VISITAS GUIADAS</h4>
+          <p><span class="fa fa-usd"></span>Entrada gratuita.</p>
+          <p><span class="fa fa-clock-o"></span>Horario de Lunes a Domingos, 8:30 a 14:30 h. Sábado y Domingo público en
+            general. </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="formulario-visitas-guiadas">
+          <p><br></p>
+          <p>
+            <button class="btn btn-epec-verde-claro btn-rounded" type="button" data-toggle="collapse"
+              data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              FORMULARIO VISITAS GUIADAS
+            </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
+              keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
           </div>
+
         </div>
       </div>
     </div>
   </div>
+  <p><br></p>
+  <div class="container libro-de-visitas">
+    <div class="row">
+      <div class="col-12">
+        <h2>LIBRO DE VISITAS</h2>
+        <p>Libro de Visitas Virtuales del sitio del Museo Usina Molet. Espacio destinado a recibir una corriente de
+          realimentación formada por opiniones, aportes y críticas de parte de los visitantes del Museo real y virtual.
+          Un homenaje a los pioneros que mejoraron la calidad de vida de los cordobeses.</p>
+      </div>
+
+
+
+
+      <div class="col-12">
+        <div class="card card-body">
+          <form>
+
+
+
+            <div class="form-group">
+              <label for="exampleFormControlInput1"><span
+                  class="fa fa-user p-r-05 epec-color-verde-claro"></span>Escriba su nombre y apellido, colegio o
+                institución</label>
+
+              <input type="text" class="form-control" id="visita" aria-describedby="visita">
+            </div>
+
+
+
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Escriba aquí su comentario</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+
+            <div class="add-comment-bottom">
+              <div class="comment-form-left">
+                <div class="star-row">
+                  <div class="text">
+                    Atención de los guías:
+                  </div>
+                  <div class="stars">
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                  </div>
+                </div>
+                <div class="star-row">
+                  <div class="text">
+                    Facilidad para llegar:
+                  </div>
+                  <div class="stars">
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                  </div>
+                </div>
+                <div class="star-row">
+                  <div class="text">
+                    Entorno del lugar:
+                  </div>
+                  <div class="stars">
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                  </div>
+                </div>
+                <div class="star-row">
+                  <div class="text">
+                    El museo en general
+                  </div>
+                  <div class="stars">
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                    <span class="fa fa-star star-empty"></span>
+                  </div>
+                </div>
+
+
+
+
+              </div>
+              <div class="comment-form-right">
+                <button class="btn btn-epec-verde-claro btn-rounded btn-enviar" type="button" data-toggle="collapse"
+                  data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  ENVIAR
+                </button>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-12">
+        <div class="card card-body">
+          <h6 class="epec-color-verde-claro"><span class="fa fa-user p-r-05"></span>JACINTO LÓPEZ MURIEGA <span
+              class="fecha">- 05/02/2019</span></h6>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat. Lorem
+            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat.</p>
+          <div class="star-row">
+            <div class="text">
+              Atención de los guías:
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="text">
+              Facilidad para llegar:
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-empty"></span>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="text">
+              Entorno del lugar:
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-empty"></span>
+              <span class="fa fa-star star-empty"></span>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="text">
+              El museo en general
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-empty"></span>
+              <span class="fa fa-star star-empty"></span>
+              <span class="fa fa-star star-empty"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card card-body">
+          <h6 class="epec-color-verde-claro"><span class="fa fa-user p-r-05"></span>JACINTO LÓPEZ MURIEGA <span
+              class="fecha">- 05/02/2019</span></h6>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat. Lorem
+            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat.</p>
+          <div class="star-row">
+            <div class="text">
+              Atención de los guías:
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="text">
+              Facilidad para llegar:
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-empty"></span>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="text">
+              Entorno del lugar:
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-empty"></span>
+              <span class="fa fa-star star-empty"></span>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="text">
+              El museo en general
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-empty"></span>
+              <span class="fa fa-star star-empty"></span>
+              <span class="fa fa-star star-empty"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-12">
+        <div class="card card-body">
+          <h6 class="epec-color-verde-claro"><span class="fa fa-user p-r-05"></span>JACINTO LÓPEZ MURIEGA <span
+              class="fecha">- 05/02/2019</span></h6>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat. Lorem
+            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat.</p>
+          <div class="star-row">
+            <div class="text">
+              Atención de los guías:
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="text">
+              Facilidad para llegar:
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-empty"></span>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="text">
+              Entorno del lugar:
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-empty"></span>
+              <span class="fa fa-star star-empty"></span>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="text">
+              El museo en general
+            </div>
+            <div class="stars">
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-full"></span>
+              <span class="fa fa-star star-empty"></span>
+              <span class="fa fa-star star-empty"></span>
+              <span class="fa fa-star star-empty"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
 </section>
+
+
+
 <section class="modal-info {{recibidoParams.sectioclass}}">
-  <div class="modal fade" id="modalrecibido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalrecibido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-notify modal-md" role="document">
       <div class="modal-content">
 
@@ -74,7 +392,8 @@
           <div class="container">
             <div class="text-center">
               <i *ngIf="recibidoParams.sectioclass==''" class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
-              <i *ngIf="recibidoParams.sectioclass=='alert'" class="fa fa-exclamation-triangle fa-4x mb-3 animated rotateIn"></i>
+              <i *ngIf="recibidoParams.sectioclass=='alert'"
+                class="fa fa-exclamation-triangle fa-4x mb-3 animated rotateIn"></i>
             </div>
 
             <div class="text-center">
@@ -85,7 +404,8 @@
         </div>
 
         <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-azul-epec waves-effect" data-dismiss="modal" (click)="modalRecibidoCloseClicked()">{{recibidoParams.buttonText}}</button>
+          <button type="button" class="btn btn-azul-epec waves-effect" data-dismiss="modal"
+            (click)="modalRecibidoCloseClicked()">{{recibidoParams.buttonText}}</button>
         </div>
 
       </div>

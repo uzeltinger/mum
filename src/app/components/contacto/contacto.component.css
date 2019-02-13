@@ -1,16 +1,95 @@
-.contacto .header-background {
-    background: url('/assets/template/images/fondo-contacto.jpg');
-    padding: 2rem;
+.contacto {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
 }
-.fondo-blanco-para-compensar-altura {
-    background: #fff;
-}
-.contacto .contact-form {
-    background: #fff;
-    padding: 2rem;
+.contacto .container .row {
+   
 }
 
+.contact-info p {
+    line-height: 1rem;
+    margin-bottom: .5rem;
+}
+.contact-info .fa {
+    margin-right: .5rem;
+    color: #999;
+}
+.distancias .fa {
+    margin-right: .5rem;
+    color: #006D59;
+}
 
+.visitas-guiadas p {
+    line-height: 1rem;
+    margin-bottom: .5rem;
+}
+.visitas-guiadas .fa {
+    margin-right: .5rem;
+    color: #999;
+}
+.btn-epec-verde-claro {
+    background-color: #57AD4A!important;
+    color: #fff!important;    
+    font-weight: 500;
+    font-size: 1rem;
+}
+.btn-rounded {
+    border-radius: 2rem;
+}
+.mapa {    
+    width: 100%;
+    height: 480px;
+}
+.gmap1 {
+    /*display: none;*/
+    width: 100%;
+    height: 480px;
+}
+.p-r-05 {
+    padding-right: .5rem;
+}
+.container.libro-de-visitas .card{
+    margin-bottom: 2rem;
+}
+.fecha {
+    color: #999;
+}
+.star-row{
+    display: flex;
+}
+.star-row .text{
+    min-width: 200px;
+}
+.star-row .stars{
+
+}
+.star-row .stars .fa-star {
+margin-right: .3rem;
+}
+.star-row .stars .star-full{
+    color: #F0B503;
+}
+.star-row .stars .star-empty{
+    color: #C4C4C4;
+}
+.add-comment-bottom {
+    display: flex;
+}
+.comment-form-left {
+    width: 50%;
+    float: left;
+}
+.comment-form-right {
+    width: 50%;
+    float: right;
+    text-align: right;
+}
+.btn-enviar {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
 /*  modal notify messages    */
 .modal-body .container .text-center i {
     color: #006073;;
