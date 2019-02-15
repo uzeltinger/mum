@@ -3,19 +3,25 @@
     <div class="row">
       <div class="col-12">
         <h2>CONTACTO</h2>
-        <p>Para ponerse en contacto con los representantes del Museo Usina Molet puede llamar a los telefonos indicados
-          o bien llenar el formulario. También puede enviarnos un mail a <a class="epec-color-verde-claro"
-            href="mailto:museomolet@epec.com.ar">
-            museomolet@epec.com.ar</a>.
-        </p>
         <div class="contact-info">
-          <h4 class="epec-color-verde-claro">MUSEO USINA MOLET</h4>
           <p><span class="fa fa-map-marker"></span>Ruta prov. E55 km 22, Código Postal X5151XAI, a 1.700 m del Dique de
             San Roque, camino La Calera.</p>
           <p><span class="fa fa-phone"></span>Teléfono: 0351 4296036 (Administración EPEC - Córdoba Ciudad)</p>
           <p><span class="fa fa-clock-o"></span>Horario: lunes a viernes, 08:30 a 14:30 h.</p>
           <p><span class="fa fa-usd"></span>Entrada libre y gratuita.</p>
         </div>
+      </div>
+    </div>
+    <div class="row d-sm-none">
+      <div class="col-6 nopadding">
+          <button class="btn btn-epec-verde-claro btn-rounded btn-small" type="button" data-toggle="collapse"
+          data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+          (click)="goToFormularioVisitasGuiadas()">
+          ¡QUIERO VISITAR EL MUSEO!
+        </button>
+      </div>
+      <div class="col-6 nopadding">
+        <a class="epec-color-verde-claro ver-libro-de-visitas" (click)="goToLibroDeVisitas()">Ver libro de visitas</a>
       </div>
     </div>
     <div class="row row-distancias">
@@ -28,7 +34,7 @@
         </div>
       </div>
       <div class="col-12 col-lg-6">
-        <div class="distancias">
+        <div class="distancias distancias-descktop">
           <h4 class="epec-color-verde-claro">DISTANCIAS</h4>
           <p><span class="fa fa-map-marker"></span>Desde aeropuerto (45 min.) por Av. Ricardo Rojas y RP E55<br>
             <a target="_blank" class="epec-color-verde-claro" href="https://goo.gl/maps/noCz4XCNFnA2">Ver en Google Maps</a></p>
@@ -45,6 +51,29 @@
             Sigue por RN20 y RP73 hacia RP E55 en Santa María.<br>
             <a target="_blank" class="epec-color-verde-claro" href="https://goo.gl/maps/XMJyzTJcfSC2">Ver en Google Maps</a></p>
         </div>
+
+
+
+        <div class="distancias distancias-mobile">
+            <h4 class="epec-color-verde-claro" data-toggle="collapse" href="#collapseDistancias" role="button" aria-expanded="false" aria-controls="collapseDistancias">DISTANCIAS <span class="fa fa-angle-up rotate-icon"></span></h4>
+            <div class="collapse show" id="collapseDistancias">            
+            <p><span class="fa fa-map-marker"></span>Desde aeropuerto (45 min.) por Av. Ricardo Rojas y RP E55<br>
+              <a target="_blank" class="epec-color-verde-claro" href="https://goo.gl/maps/noCz4XCNFnA2">Ver en Google Maps</a></p>
+            <p><span class="fa fa-map-marker"></span>Desde Carlos Paz (25 min.)<br>
+              Sigue por Gral. Paz hacia Av. Libertad/RP14.<br>
+              Toma Av. San Martín/RN38, Av. España/RN20 y RP73 hacia RP E55.<br>
+              <a target="_blank" class="epec-color-verde-claro" href="https://goo.gl/maps/BJ8M2vtr2Kp">Ver en Google Maps</a></p>
+            <p><span class="fa fa-map-marker"></span>Desde terminal de ómnibus (49 min.)<br>
+              Accede a RN20 desde Av. Poeta Lugones y Av. Fuerza Aerea Argentina.<br>
+              Sigue por RN20 y RP73 hacia RP E55 en Santa María.<br>
+              <a target="_blank" class="epec-color-verde-claro" href="https://goo.gl/maps/ZMDBNg8w1HB2">Ver en Google Maps</a></p>
+            <p><span class="fa fa-map-marker"></span>Desde el centro de córdoba (49 min.)<br>
+              Accede a RN20 desde Julio A. Roca y Av. Fuerza Aerea Argentina.<br>
+              Sigue por RN20 y RP73 hacia RP E55 en Santa María.<br>
+              <a target="_blank" class="epec-color-verde-claro" href="https://goo.gl/maps/XMJyzTJcfSC2">Ver en Google Maps</a></p>
+            </div>
+          </div>
+
       </div>
     </div>
 
@@ -61,17 +90,18 @@
 
     <div class="row">
       <div class="col-12">
-        <div class="formulario-visitas-guiadas">
+        <div class="formulario-visitas-guiadas" id="formulario-visitas-guiadas">
           <p><br></p>
           <p>
             <button class="btn btn-epec-verde-claro btn-rounded" type="button" data-toggle="collapse"
               data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              QUIERO UNA VISITA GUIADA
+              ¡QUIERO VISITAR EL MUSEO!
             </button>
           </p>
           <div class="collapse" id="collapseExample">
             <div class="card card-body">
               <form>
+                <p class="text-required">* Todos los datos son obligatorios.</p>
                 <div class="row">
                   <div class="col-12 col-lg-6">
 
@@ -161,7 +191,7 @@
     </div>
   </div>
   <p><br></p>
-  <div class="container libro-de-visitas">
+  <div class="container libro-de-visitas" id="libro-de-visitas">
     <div class="row">
       <div class="col-12">
         <h2>LIBRO DE VISITAS</h2>

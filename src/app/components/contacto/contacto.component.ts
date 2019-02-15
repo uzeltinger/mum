@@ -47,14 +47,13 @@ export class ContactoComponent implements OnInit {
 
   loadMap() {
     let mapProp = {
-      center: new google.maps.LatLng(-31.39245, -64.167777),
-      zoom: 10,
+      center: new google.maps.LatLng(-31.3620549, -64.4258404),
+      zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
-    this.addMarker(new google.maps.LatLng(-31.39245, -64.167777), this.map, this.iconImage, 'EPEC');
-
+    this.addMarker(new google.maps.LatLng(-31.3620549, -64.4258404), this.map, this.iconImage, 'EPEC');
 
   }
 
@@ -68,4 +67,16 @@ export class ContactoComponent implements OnInit {
     return marker;
   }
 
+  goToLibroDeVisitas(){
+    let el = document.getElementById("libro-de-visitas");
+    el.scrollIntoView();
+  }
+  
+  goToFormularioVisitasGuiadas(){
+    console.log('goToFormularioVisitasGuiadas');
+    setTimeout(() => {      
+    let el = document.getElementById("formulario-visitas-guiadas");
+    el.scrollIntoView();
+    }, 200);
+  }
 }
