@@ -225,3 +225,8 @@ button.btn-azul-epec, a.btn-azul-epec {
         background: #fff;
     }  
 }
+@media(min-width: 576px){
+    .distancias-mobile {
+        display: none;
+    }
+}
