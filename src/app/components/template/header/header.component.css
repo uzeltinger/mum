@@ -140,3 +140,11 @@ header .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
 .navbar-logo {
     max-width: 254px;
 }
+.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+header nav.navbar ul.navbar-nav li.nav-item {
+    background: #57AB4A;
+}
