@@ -67,7 +67,7 @@ export class ContactoComponent implements OnInit {
     return marker;
   }
 
-  goToLibroDeVisitas(){
+  goLibroDeVisitas(){
     let el = document.getElementById("libro-de-visitas");
     el.scrollIntoView();
   }
