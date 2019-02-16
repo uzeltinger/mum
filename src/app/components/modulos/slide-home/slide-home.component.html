@@ -7,6 +7,7 @@
 
             <div class="carousel-item" *ngFor="let slide of slideHome;index as i" [ngClass]="{'active': i==0}">
                 <div class="slide-fondo" [ngStyle]="{'background-image':'url(' + slide.urlImagen + ')'}"></div>
+                <div class="carousel-opacidad"></div>
                 <div class="carousel-caption">
                     <h2>{{slide.titulo}}</h2><p class="d-none d-md-block">{{slide.subtitulo}}</p>
                     <div *ngIf="slide.url!=null" class="leermas-container">

@@ -12,10 +12,17 @@
 section.perfil-carousel .slide-fondo {
     width: 100%;
     height: 300px;
-  background-position-x: center;
+    background-position-x: center;
 }
 .carousel-caption {
     top: 30%;
     max-width: 600px;
     margin: auto;
+}
+.carousel-opacidad {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(0, 0, 0, 0.2);
 }

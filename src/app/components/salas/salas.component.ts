@@ -16,8 +16,16 @@ export class SalasComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.sala = params['sala'];
-      console.log('sala', this.sala);      
+      console.log('sala', this.sala);
+      this.goInicioSalas();  
     });
   }
 
+  goInicioSalas(){
+    console.log('goInicioSalas');
+    setTimeout(() => {      
+    let el = document.getElementById("inicioSalas");
+    el.scrollIntoView();
+    }, 10);
+  }
 }

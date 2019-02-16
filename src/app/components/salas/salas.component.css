@@ -1,11 +1,16 @@
 .salas {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    padding: 1rem;
 }
-.salas .container .row {
-    padding: 2rem;
+@media(min-width: 768px){
+    .salas {
+        padding: 1rem;
+    }
+    .salas .container .row {
+        padding: 2rem;
+    }
 }
+
 .coltexto {
     padding: 1rem;
 }

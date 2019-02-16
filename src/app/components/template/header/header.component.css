@@ -100,11 +100,12 @@ header .container-menu-all {
 }
 header nav.navbar-dark {
     background-color: #57AB4A;
-    z-index:9;
+    z-index:12;
     padding: 0;
 }
 @media(max-width: 576px){
-    header .navbar-3verdes {
+    /*header .navbar-3verdes {*/
+        .navbar-logo {
         display: none;
     }
 }
@@ -138,7 +139,7 @@ header .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
     background-color:transparent;
 }
 .navbar-logo {
-    max-width: 254px;
+    /*max-width: 254px;*/
 }
 .navbar-brand {
     padding-top: 0;
