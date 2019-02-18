@@ -103,12 +103,6 @@ header nav.navbar-dark {
     z-index:12;
     padding: 0;
 }
-@media(max-width: 576px){
-    /*header .navbar-3verdes {*/
-        .navbar-logo {
-        display: none;
-    }
-}
 
 header nav.navbar ul.navbar-nav {
     margin-top: 0px;
@@ -148,4 +142,23 @@ header .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
 
 header nav.navbar ul.navbar-nav li.nav-item {
     background: #57AB4A;
+}
+
+@media(max-width: 576px){
+    header .navbar-3verdes {
+        width: 76px;
+    }
+    .navbar-logo {
+        max-width: 211px;
+    }
+    header {
+        min-height: 40px;
+    }
+    header .container-menu-all {
+        height: 40px;;
+    }
+    header nav.navbar ul.navbar-nav li.nav-item {        
+    height: 46px;
+    line-height: 30px;
+    }
 }
