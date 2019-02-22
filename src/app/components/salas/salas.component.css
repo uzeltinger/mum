@@ -50,3 +50,10 @@ color: #000;
 .col-image {
     padding: 6px;
 }
+@media(max-width: 767px){
+    .galeria {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 20px;    
+    }
+}
