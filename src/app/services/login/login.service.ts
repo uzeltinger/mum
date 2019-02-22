@@ -13,7 +13,7 @@ export class LoginService {
   isUserLogued(){
     let epecUserData = localStorage.getItem('epecUserData');
     console.log('epecUserData',epecUserData);
-    if (epecUserData != 'undefined') {
+    if (epecUserData != 'undefined' && epecUserData != null) {
       let user = JSON.parse(localStorage.getItem('epecUserData'));
       if (user.usuario == 'museomolet@epec.com.ar') {
         if (user.contrasenia == 'Epec+2019') {
@@ -27,7 +27,7 @@ export class LoginService {
   getUser(){
     let epecUserData = localStorage.getItem('epecUserData');
     console.log('epecUserData',epecUserData);
-    if (epecUserData != 'undefined') {
+    if (epecUserData != 'undefined' && epecUserData != null) {
       return JSON.parse(localStorage.getItem('epecUserData'));
     }
     return null;
