@@ -196,23 +196,25 @@
 
       <div class="col-12">
         <div class="card card-body">
-          <form>
-
-
+          
+            <form (ngSubmit)="onSubmit(commentForm)" #commentForm="ngForm" class="user-forms">
+                
 
             <div class="form-group">
               <label for="exampleFormControlInput1"><span
                   class="fa fa-user p-r-05 epec-color-verde-claro"></span>Escriba su nombre y apellido, colegio o
                 institución</label>
 
-              <input type="text" class="form-control" id="visita" aria-describedby="visita">
+                <input type="text" #nombre="ngModel" [(ngModel)]="commentForm.nombre" name="nombre" id="nombre"
+                class="form-control" required>
+
             </div>
 
 
 
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Escriba aquí su comentario</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" id="comentario" rows="3"  #comentario="ngModel" [(ngModel)]="commentForm.comentario" name="comentario" id="comentario"></textarea>
             </div>
 
             <div class="add-comment-bottom">
@@ -222,11 +224,7 @@
                     Atención de los guías:
                   </div>
                   <div class="stars">
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
+                      <span *ngFor="let estrella of estrellas;index as i" class="addStar fa fa-star" [ngClass]="  (estrellasSeleccionadas[1] > i) ? 'star-full' : 'star-empty' " (click)="setEstrellas(1,i+1)"></span>
                   </div>
                 </div>
                 <div class="star-row">
@@ -234,11 +232,7 @@
                     Facilidad para llegar:
                   </div>
                   <div class="stars">
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
+                      <span *ngFor="let estrella of estrellas;index as i" class="addStar fa fa-star" [ngClass]="  (estrellasSeleccionadas[2] > i) ? 'star-full' : 'star-empty' " (click)="setEstrellas(2,i+1)"></span>
                   </div>
                 </div>
                 <div class="star-row">
@@ -246,11 +240,7 @@
                     Entorno del lugar:
                   </div>
                   <div class="stars">
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
+                      <span *ngFor="let estrella of estrellas;index as i" class="addStar fa fa-star" [ngClass]="  (estrellasSeleccionadas[3] > i) ? 'star-full' : 'star-empty' " (click)="setEstrellas(3,i+1)"></span>
                   </div>
                 </div>
                 <div class="star-row">
@@ -258,11 +248,7 @@
                     El museo en general
                   </div>
                   <div class="stars">
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
-                    <span class="fa fa-star star-empty"></span>
+                      <span *ngFor="let estrella of estrellas;index as i" class="addStar fa fa-star" [ngClass]="  (estrellasSeleccionadas[4] > i) ? 'star-full' : 'star-empty' " (click)="setEstrellas(4,i+1)"></span>
                   </div>
                 </div>
 
@@ -271,7 +257,7 @@
 
               </div>
               <div class="comment-form-right">
-                <button class="btn btn-epec-verde-claro btn-rounded btn-enviar" type="button">
+                <button class="btn btn-epec-verde-claro btn-rounded btn-enviar" type="submit" [disabled]="!commentForm.form.valid">
                   ENVIAR
                 </button>
               </div>
@@ -283,196 +269,64 @@
       </div>
 
 
-
-
-      <div class="col-12">
-        <div class="card card-body">
-          <h6 class="epec-color-verde-claro"><span class="fa fa-user p-r-05"></span>JACINTO LÓPEZ MURIEGA <span
-              class="fecha">- 05/02/2019</span></h6>
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-            dolore magna aliquam erat. Lorem
-            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-            dolore magna aliquam erat.</p>
-          <div class="star-row">
-            <div class="text">
-              Atención de los guías:
+      <div class="col-12" *ngFor="let comentario of comentarios;index as i">
+          <div class="card card-body">
+              <div class="row">
+                <div class="col-12 col-sm-8">
+                    <h6 class="epec-color-verde-claro"><span class="fa fa-user p-r-05"></span>{{comentario.nombre}} <span
+                      class="fecha">- {{comentario.fecha}}</span></h6>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="actions" *ngIf="userLogued">
+                    <div class="action borrar"><a (click)="borrarComentario(comentario)">Borrar</a></div>
+                    <div *ngIf="!comentario.habilitado" class="action mostrar"><a (click)="mostrarComentario(comentario)">Mostrar</a></div>
+                    <div *ngIf="comentario.habilitado" class="action ocultar"><a (click)="ocultarComentario(comentario)">Ocultar</a></div>                    
+                  </div>
+                </div>
+              </div>
+              
+              <p [innerHTML]="comentario.comentario"></p>
+              <div class="star-row">
+                <div class="text">
+                  Atención de los guías:
+                </div>
+                <div class="stars">
+                  <span *ngFor="let estrella of estrellas;index as i" class="fa fa-star" [ngClass]="  (comentario.atencion > i) ? 'star-full' : 'star-empty' "></span>
+                </div>
+                
+              </div>
+              <div class="star-row">
+                <div class="text">
+                  Facilidad para llegar:
+                </div>
+                <div class="stars">
+                    <span *ngFor="let estrella of estrellas;index as i" class="fa fa-star" [ngClass]="  (comentario.facilidad > i) ? 'star-full' : 'star-empty' "></span>
+                </div>
+              </div>
+              <div class="star-row">
+                <div class="text">
+                  Entorno del lugar:
+                </div>
+                <div class="stars">
+                    <span *ngFor="let estrella of estrellas;index as i" class="fa fa-star" [ngClass]="  (comentario.entorno > i) ? 'star-full' : 'star-empty' "></span>
+                </div>
+              </div>
+              <div class="star-row">
+                <div class="text">
+                  El museo en general
+                </div>
+                <div class="stars">
+                    <span *ngFor="let estrella of estrellas;index as i" class="fa fa-star" [ngClass]="  (comentario.general > i) ? 'star-full' : 'star-empty' "></span>
+                </div>
+              </div>
             </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-            </div>
-          </div>
-          <div class="star-row">
-            <div class="text">
-              Facilidad para llegar:
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-empty"></span>
-            </div>
-          </div>
-          <div class="star-row">
-            <div class="text">
-              Entorno del lugar:
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-empty"></span>
-              <span class="fa fa-star star-empty"></span>
-            </div>
-          </div>
-          <div class="star-row">
-            <div class="text">
-              El museo en general
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-empty"></span>
-              <span class="fa fa-star star-empty"></span>
-              <span class="fa fa-star star-empty"></span>
-            </div>
-          </div>
-        </div>
       </div>
-
-      <div class="col-12">
-        <div class="card card-body">
-          <h6 class="epec-color-verde-claro"><span class="fa fa-user p-r-05"></span>JACINTO LÓPEZ MURIEGA <span
-              class="fecha">- 05/02/2019</span></h6>
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-            dolore magna aliquam erat. Lorem
-            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-            dolore magna aliquam erat.</p>
-          <div class="star-row">
-            <div class="text">
-              Atención de los guías:
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-            </div>
-          </div>
-          <div class="star-row">
-            <div class="text">
-              Facilidad para llegar:
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-empty"></span>
-            </div>
-          </div>
-          <div class="star-row">
-            <div class="text">
-              Entorno del lugar:
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-empty"></span>
-              <span class="fa fa-star star-empty"></span>
-            </div>
-          </div>
-          <div class="star-row">
-            <div class="text">
-              El museo en general
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-empty"></span>
-              <span class="fa fa-star star-empty"></span>
-              <span class="fa fa-star star-empty"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-12">
-        <div class="card card-body">
-          <h6 class="epec-color-verde-claro"><span class="fa fa-user p-r-05"></span>JACINTO LÓPEZ MURIEGA <span
-              class="fecha">- 05/02/2019</span></h6>
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-            dolore magna aliquam erat. Lorem
-            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-            dolore magna aliquam erat.</p>
-          <div class="star-row">
-            <div class="text">
-              Atención de los guías:
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-            </div>
-          </div>
-          <div class="star-row">
-            <div class="text">
-              Facilidad para llegar:
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-empty"></span>
-            </div>
-          </div>
-          <div class="star-row">
-            <div class="text">
-              Entorno del lugar:
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-empty"></span>
-              <span class="fa fa-star star-empty"></span>
-            </div>
-          </div>
-          <div class="star-row">
-            <div class="text">
-              El museo en general
-            </div>
-            <div class="stars">
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-full"></span>
-              <span class="fa fa-star star-empty"></span>
-              <span class="fa fa-star star-empty"></span>
-              <span class="fa fa-star star-empty"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
-
-
-
   </div>
 </section>
 
+<div *ngIf="showSpinner" class="spinner"></div>
+<div *ngIf="showSpinner" class="loader"></div>
 
 
 <section class="modal-info {{recibidoParams.sectioclass}}">
@@ -513,3 +367,41 @@
   </div>
 </section>
 <a style="display: none" id="open-modal-recibido" data-toggle="modal" data-target="#modalrecibido">Popup</a>
+
+
+
+
+
+
+
+<section class="modal-info">
+    <div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-md" role="document">
+            <div class="modal-content">
+  
+                <div class="modal-header">
+                    <p class="heading lead">{{modalParams.title}}</p>    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">×</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <div  class="container">
+                        <div class="text-center">
+                            <p>{{modalParams.text}}</p>
+                        </div>  
+                    </div>
+                </div>
+  
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-azul-epec waves-effect" (click)="actionConfirmedClicked()" data-dismiss="modal">{{modalParams.buttonText}}</button>
+                    <a class="btn btn-epec-empty waves-effect float-left" data-dismiss="modal">Cancelar</a>
+                                     
+                </div>
+                
+            </div>
+        </div>
+    </div>    
+  </section>
+  <a style="display: none" id="open-modal-confirm" data-toggle="modal" data-target="#modalConfirm">Popup</a>

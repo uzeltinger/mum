@@ -35,4 +35,12 @@ export class CmsService {
   setSlideHomeCache(data) {
     this.slideHome = data;
   }
+
+  getComments() {
+    if (this.apiEndpointDev != null) {
+      return this.httpClient.get(this.apiEndpointDev + "/comments");
+    } else {
+      return this.httpClient.get("/media/cms/comentarios.json");
+    }
+  }
 }

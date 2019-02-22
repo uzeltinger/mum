@@ -230,3 +230,30 @@ button.btn-azul-epec, a.btn-azul-epec {
         display: none;
     }
 }
+.actions {
+    height: 50px;
+}
+.action {
+    float: right;
+    text-align: right;
+    margin-left: 20px;
+}
+.action a {    
+    border-radius: 10px;
+    padding: 4px 10px;
+}
+.action.mostrar a{
+    color: #15741d;
+    border: 1px solid #15741d;
+}
+.action.ocultar a{
+    color: #ac1987;
+    border: 1px solid #ac1987;
+}
+.action.borrar a{
+    color: #ee1111;
+    border: 1px solid #ee1111;
+}
+.addStar {
+    cursor: pointer;
+}

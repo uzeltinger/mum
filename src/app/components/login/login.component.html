@@ -1,0 +1,94 @@
+<section class="login">
+  <div class="header-background">
+    <div class="content">
+      <div class="row">
+        <div class="col-12">
+
+          <div class="contact-form" *ngIf="userLogued">
+            <div class="header">
+              <h1 class="title epec-color-verde">Logout
+                <i class="fa fa-user"></i>
+              </h1>
+            </div>
+            <div class="inner-form">
+              <div class="md-form mt-3">
+                <a class="btn btn-epec-color-verde mt-4 btn-block epec-bg-color-verde" (click)="logout()">SALIR</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form" *ngIf="!userLogued">
+            <div class="header">
+              <h1 class="title epec-color-verde">Login
+                <i class="fa fa-user"></i>
+              </h1>
+            </div>
+            <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm" class="user-forms">
+              <div class="inner-form">
+                <div class="md-form mt-3">
+                  <input type="text" #email="ngModel" [(ngModel)]="loginForm.email" name="email" id="email"
+                    class="form-control" required autocomplete="off">
+                  <label for="email">E-mail</label>
+                </div>
+                <div class="md-form mt-3">
+                  <input type="password" #contrasenia="ngModel" [(ngModel)]="loginForm.contrasenia" name="contrasenia"
+                    id="contrasenia" class="form-control" required autocomplete="off">
+                  <label for="contrasenia">Clave</label>
+                </div>
+                <div class="md-form mt-3">
+                  <input class="btn btn-epec-color-verde mt-4 btn-block epec-bg-color-verde" type="submit"
+                    name="INGRESAR" [disabled]="!loginForm.form.valid">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div *ngIf="showSpinner" class="spinner"></div>
+<div *ngIf="showSpinner" class="loader"></div>
+
+
+
+
+
+
+<section class="modal-info">
+  <div class="modal fade" id="modalrecibido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-md" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <p class="heading lead">{{modalParams.title}}</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">×</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container">
+            <div class="text-center">
+              <i *ngIf="modalParams.sectioclass==''" class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+              <i *ngIf="modalParams.sectioclass=='alert'"
+                class="fa fa-exclamation-triangle fa-4x mb-3 animated rotateIn"></i>
+            </div>
+
+            <div class="text-center">
+
+              <p [innerHTML]="modalParams.text"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-azul-epec waves-effect" data-dismiss="modal"
+            (click)="modalRecibidoCloseClicked()">{{modalParams.buttonText}}</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<a style="display: none" id="open-modal-recibido" data-toggle="modal" data-target="#modalrecibido">Popup</a>

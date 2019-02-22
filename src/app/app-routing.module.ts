@@ -5,9 +5,11 @@ import { HomeComponent } from './components/home/home.component';
 import { HistoriaComponent } from './components/historia/historia.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { SalasComponent } from './components/salas/salas.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'historia', component: HistoriaComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'contacto/:ancla', component: ContactoComponent },

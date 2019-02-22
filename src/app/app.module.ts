@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,7 @@ import { SlideHomeComponent } from './components/modulos/slide-home/slide-home.c
 import { HistoriaComponent } from './components/historia/historia.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { SalasComponent } from './components/salas/salas.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,12 @@ import { SalasComponent } from './components/salas/salas.component';
     HeaderComponent,
     HistoriaComponent,
     ContactoComponent,
-    SalasComponent
+    SalasComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule, RouterModule, AppRoutingModule, BrowserAnimationsModule, GoTopButtonModule,   
-    HttpClientModule  
+    HttpClientModule, FormsModule
   ],
   providers: [],
   exports: [GoTopButtonModule],
