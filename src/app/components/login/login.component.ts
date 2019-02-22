@@ -60,4 +60,7 @@ export class LoginComponent implements OnInit {
     this.modalParams.buttonText = "Cerrar";
     this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
   }
+  modalRecibidoCloseClicked(){
+    
+  }
 }
