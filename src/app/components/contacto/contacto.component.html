@@ -270,7 +270,7 @@
 
 
       <div class="col-12" *ngFor="let comentario of comentarios;index as i">
-          <div class="card card-body">
+          <div class="card card-body" *ngIf="comentario.estado != 9">
               <div class="row">
                 <div class="col-12 col-sm-8">
                     <h6 class="epec-color-verde-claro"><span class="fa fa-user p-r-05"></span>{{comentario.nombre}} <span
@@ -279,8 +279,8 @@
                 <div class="col-12 col-sm-4">
                   <div class="actions" *ngIf="userLogued">
                     <div class="action borrar"><a (click)="borrarComentario(comentario)">Borrar</a></div>
-                    <div *ngIf="!comentario.habilitado" class="action mostrar"><a (click)="mostrarComentario(comentario)">Mostrar</a></div>
-                    <div *ngIf="comentario.habilitado" class="action ocultar"><a (click)="ocultarComentario(comentario)">Ocultar</a></div>                    
+                    <div *ngIf="comentario.estado == 0" class="action mostrar"><a (click)="guardarComentario(comentario,1)">Mostrar</a></div>
+                    <div *ngIf="comentario.estado == 1" class="action ocultar"><a (click)="guardarComentario(comentario,0)">Ocultar</a></div>                    
                   </div>
                 </div>
               </div>

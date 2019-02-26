@@ -29,7 +29,7 @@ export class ContactoComponent implements OnInit {
   estrellasEntorno: number = 0;
   estrellasGeneral: number = 0;
   estrellasSeleccionadas: number[] = [];
-  borrarComentarioId: number = 0;
+  borrarComentarioObject: any;
 
   constructor(private route: ActivatedRoute,
     private loginService: LoginService, private cmsService: CmsService,
@@ -64,8 +64,17 @@ export class ContactoComponent implements OnInit {
   getComments() {
     this.cmsService.getComments()
       .subscribe(result => {
-        this.comentarios = result;
-        console.log('getComments this.comentarios', this.comentarios);
+        let comentarios: any = result;
+        if(!this.userLogued){
+          comentarios.forEach(element => {
+            if(element.estado == 0){
+              element.estado = 9;
+            }            
+          });
+          this.comentarios = comentarios;
+        }else{
+          this.comentarios = result;
+        }        
       },
         error => {
           console.log('error', error);
@@ -82,6 +91,10 @@ export class ContactoComponent implements OnInit {
   onSubmit(formulario) {
     // this.showSpinner = true;
     let data = formulario.form.value;
+    data.atencion = this.estrellasSeleccionadas[1];
+    data.facilidad = this.estrellasSeleccionadas[2];
+    data.entorno = this.estrellasSeleccionadas[3];
+    data.general = this.estrellasSeleccionadas[4];
     console.log('data', data);
     this.showSpinner = true;
     
@@ -100,21 +113,38 @@ export class ContactoComponent implements OnInit {
   }
 
   actionConfirmedClicked() {
-    console.log('actionConfirmedClicked',this.borrarComentarioId);
+    this.cmsService.deleteComment(this.borrarComentarioObject.id)
+      .subscribe(result => {
+        this.borrarComentarioObject.estado = 9;
+      },
+        error => {
+          console.log('error', error);
+        }
+      );
   }
 
   borrarComentario(comentario){
     console.log('borrarComentario');
-    this.borrarComentarioId = comentario.id;
+    this.borrarComentarioObject = comentario;
     this.modalParams.title = "Cuidado.";
     this.modalParams.text = "Está seguro que desea eliminar el comentario?";
     this.modalParams.buttonText = "Borrar";
     this.modalParams.buttonAction = "actionConfirmedClicked";
     this._elementRef.nativeElement.querySelector('#open-modal-confirm').click();    
   }
-  mostrarComentario(comentario){
-    console.log('mostrarComentario');
-  }
+
+  guardarComentario(comentario, estado){
+    comentario.estado = estado;
+    this.cmsService.saveComment(comentario)
+      .subscribe(result => {
+        comentario.estado = estado;
+      },
+        error => {
+          console.log('error', error);
+        }
+      );
+  } 
+
   ocultarComentario(comentario){
     console.log('ocultarComentario');
   }
