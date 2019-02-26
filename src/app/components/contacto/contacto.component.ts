@@ -88,6 +88,19 @@ export class ContactoComponent implements OnInit {
     this.estrellasSeleccionadas[tipo] = cantidad;
   }
 
+  onSubmitSolicitud(formulario){
+    let data = formulario.form.value;
+    this.cmsService.sendSolicitud(data)
+      .subscribe(result => {
+        console.log('sendSolicitud result', result);
+      },
+        error => {
+          console.log('error', error);
+        }
+      );
+    console.log("data", data);
+  }
+
   onSubmit(formulario) {
     // this.showSpinner = true;
     let data = formulario.form.value;

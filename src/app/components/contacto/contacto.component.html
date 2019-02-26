@@ -93,43 +93,50 @@
           </p>
           <div class="collapse" id="collapseExample">
             <div class="card card-body">
-              <form>
+              <form (ngSubmit)="onSubmitSolicitud(solicitudForm)" #solicitudForm="ngForm" class="user-forms">
                 <p class="text-required">* Todos los datos son obligatorios.</p>
                 <div class="row">
                   <div class="col-12 col-lg-6">
 
                     <h6><span class="fa fa-graduation-cap p-r-05"></span>DATOS DE LA ESCUELA O INSTITUCIÓN </h6>
-
+                    
                     <div class="form-group">
                       <input type="text" class="form-control" id="nombreEscuela" name="nombreEscuela"
-                        placeholder="Nombre de la Escuela">
+                        placeholder="Nombre de la Escuela" 
+                        #nombreEscuela="ngModel" [(ngModel)]="solicitudForm.nombreEscuela" required>
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" id="localidadEscuela" name="localidadEscuela"
-                        placeholder="Localidad de la Escuela">
+                        placeholder="Localidad de la Escuela" 
+                        #localidadEscuela="ngModel" [(ngModel)]="solicitudForm.localidadEscuela" required >
                     </div>
                     <div class="form-group row">
                       <label for="fechaVisita" class="col-sm-4 col-form-label">Fecha de visita:</label>
                       <div class="col-sm-8">
-                        <input type="date" class="form-control" id="fechaVisita">
+                        <input type="date" class="form-control" id="fechaVisita" name="fechaVisita" 
+                        #fechaVisita="ngModel" [(ngModel)]="solicitudForm.fechaVisita" required>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="horaVisita" class="col-sm-4 col-form-label">Hora estimada:</label>
                       <div class="col-sm-8">
-                        <input type="time" class="form-control" id="horaVisita">
+                        <input type="time" class="form-control" id="horaVisita" name="horaVisita" 
+                        #horaVisita="ngModel" [(ngModel)]="solicitudForm.horaVisita" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" id="cantidadAlumnos" name="cantidadAlumnos"
-                        placeholder="Cantidad de alumnos">
+                        placeholder="Cantidad de alumnos" 
+                        #cantidadAlumnos="ngModel" [(ngModel)]="solicitudForm.cantidadAlumnos" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="gradoAnio" name="gradoAnio" placeholder="Grado / Año">
+                      <input type="text" class="form-control" id="gradoAnio" name="gradoAnio" placeholder="Grado / Año" 
+                      #gradoAnio="ngModel" [(ngModel)]="solicitudForm.gradoAnio" required>
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" id="orientacion" name="orientacion"
-                        placeholder="Orientación">
+                        placeholder="Orientación" 
+                        #orientacion="ngModel" [(ngModel)]="solicitudForm.orientacion" required>
                     </div>
 
 
@@ -141,36 +148,41 @@
 
                     <div class="form-group">
                       <input type="text" class="form-control" id="responsableNombre" name="responsableNombre"
-                        placeholder="Nombres del Responsable">
+                        placeholder="Nombres del Responsable" 
+                        #responsableNombre="ngModel" [(ngModel)]="solicitudForm.responsableNombre" required>
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" id="responsableApellido" name="responsableApellido"
-                        placeholder="Apellido del Responsable">
+                        placeholder="Apellido del Responsable" 
+                        #responsableApellido="ngModel" [(ngModel)]="solicitudForm.responsableApellido" required>
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" id="responsableEmail" name="responsableEmail"
-                        placeholder="Email">
+                        placeholder="Email" 
+                        #responsableEmail="ngModel" [(ngModel)]="solicitudForm.responsableEmail" required>
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" id="responsableFijo" name="responsableFijo"
-                        placeholder="Teléfono Fijo">
+                        placeholder="Teléfono Fijo" 
+                        #responsableFijo="ngModel" [(ngModel)]="solicitudForm.responsableFijo" required>
                     </div>
                     <div class="form-group">
                       <input type="text" class="form-control" id="responsableCelular" name="responsableCelular"
-                        placeholder="Teléfono Celular">
+                        placeholder="Teléfono Celular" 
+                        #responsableCelular="ngModel" [(ngModel)]="solicitudForm.responsableCelular" required>
                     </div>
 
                     <div class="form-group observaciones">
                       <h6><span class="fa fa-pencil p-r-05"></span>OBSERVACIONES / NOTA / INDICACIÓN</h6>
-                      <textarea class="form-control" id="observaciones" rows="3"></textarea>
+                      <textarea class="form-control" id="observaciones" name="observaciones" rows="3" 
+                      #observaciones="ngModel" [(ngModel)]="solicitudForm.observaciones" required></textarea>
                     </div>
 
                     <div class="form-group div-boton-enviar">
-                      <button class="btn btn-epec-verde-claro btn-rounded btn-enviar" type="button">
+                      <button class="btn btn-epec-verde-claro btn-rounded btn-enviar" type="submit" [disabled]="!solicitudForm.form.valid">
                         ENVIAR
                       </button>
-                    </div>
-
+                    </div>                                       
 
                   </div>
 

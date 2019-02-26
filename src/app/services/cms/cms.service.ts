@@ -58,6 +58,13 @@ export class CmsService {
       //console.log('showComment service');
     );
   }
+  sendSolicitud(data){
+    let httpOptions = this.getHeader();
+    return this.httpClient.post(this.apiEndpointDev + "solicitudVisita", data, httpOptions)
+    .pipe(
+      //console.log('showComment service');
+    );
+  }
 
   getHeader() {
     return {
