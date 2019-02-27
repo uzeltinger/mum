@@ -257,3 +257,9 @@ button.btn-azul-epec, a.btn-azul-epec {
 .addStar {
     cursor: pointer;
 }
+.mailto {
+    color: #212529;
+}
+.mailto:hover {
+    text-decoration: underline;
+}
