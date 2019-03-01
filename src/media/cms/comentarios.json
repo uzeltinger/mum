@@ -8,7 +8,7 @@
         "facilidad": 5,
         "entorno": 4,
         "general": 3,
-        "habilitado": true
+        "estado": 1
     },
     {
         "id" : 2,
@@ -19,7 +19,7 @@
         "facilidad": 4,
         "entorno": 4,
         "general": 3,
-        "habilitado": false
+        "estado": 0
     },
     {
         "id" : 3,
@@ -30,7 +30,7 @@
         "facilidad": 2,
         "entorno": 4,
         "general": 3,
-        "habilitado": true
+        "estado": 1
     },
     {
         "id" : 4,
@@ -41,7 +41,7 @@
         "facilidad": 4,
         "entorno": 4,
         "general": 5,
-        "habilitado": true
+        "estado": 0
     },
     {
         "id" : 5,
@@ -52,6 +52,6 @@
         "facilidad": 1,
         "entorno": 2,
         "general": 5,
-        "habilitado": true
+        "estado": 1
     }
 ]

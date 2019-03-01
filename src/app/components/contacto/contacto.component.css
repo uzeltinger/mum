@@ -259,6 +259,7 @@ button.btn-azul-epec, a.btn-azul-epec {
 }
 .mailto {
     color: #212529;
+    font-weight: 600;
 }
 .mailto:hover {
     text-decoration: underline;
