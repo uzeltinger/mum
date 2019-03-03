@@ -29,3 +29,9 @@ p.image-caption {
     color: #fff;
     padding: .5rem;
 }
+@media(max-width: 767px){
+    .noppading.padding-mobile {
+        padding-left: 20px!important;
+        padding-right: 20px!important;  
+    }
+}
