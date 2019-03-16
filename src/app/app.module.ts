@@ -16,6 +16,7 @@ import { HistoriaComponent } from './components/historia/historia.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { SalasComponent } from './components/salas/salas.component';
 import { LoginComponent } from './components/login/login.component';
+import { ServicioService } from './services/servicio/servicio.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule, RouterModule, AppRoutingModule, BrowserAnimationsModule, GoTopButtonModule,   
     HttpClientModule, FormsModule
   ],
-  providers: [],
+  providers: [
+    ServicioService
+  ],
   exports: [GoTopButtonModule],
   bootstrap: [AppComponent]
 })

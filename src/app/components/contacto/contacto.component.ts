@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { } from '@types/googlemaps';
 import { LoginService } from 'src/app/services/login/login.service';
 import { CmsService } from 'src/app/services/cms/cms.service';
+import { ServicioService } from 'src/app/services/servicio/servicio.service';
 
 @Component({
   selector: 'app-contacto',
@@ -32,12 +33,15 @@ export class ContactoComponent implements OnInit {
   borrarComentarioObject: any;
 
   constructor(private route: ActivatedRoute,
-    private loginService: LoginService, private cmsService: CmsService,
+    private loginService: LoginService, 
+    private cmsService: CmsService,
+    private servicio: ServicioService,
     private _elementRef: ElementRef) { }
 
 
 
   ngOnInit() {
+
     this.route.params.subscribe((params: ParamMap) => {
       this.ancla = params['ancla'];
       console.log('ancla', this.ancla);
@@ -90,9 +94,22 @@ export class ContactoComponent implements OnInit {
 
   onSubmitSolicitud(formulario){
     let data = formulario.form.value;
-    this.cmsService.sendSolicitud(data)
+
+    var date_ = data.solicFechaVisita.split(/\-/);
+    let fecha = date_[2] + '-' + date_[1] + '-' + date_[0];
+    data.solicFechaVisita = fecha;
+
+    this.servicio.sendSolicitud(data)
       .subscribe(result => {
         console.log('sendSolicitud result', result);
+
+        
+    this.recibidoParams.sectioclass = '';
+    this.recibidoParams.title = "Solicitud enviada.";
+    this.recibidoParams.text = "Su solicitud de visita ha sido enviada con éxito.";
+    this.recibidoParams.buttonText = "Cerrar";
+    this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
+
       },
         error => {
           console.log('error', error);

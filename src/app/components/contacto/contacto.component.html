@@ -101,42 +101,42 @@
                     <h6><span class="fa fa-graduation-cap p-r-05"></span>DATOS DE LA ESCUELA O INSTITUCIÓN </h6>
                     
                     <div class="form-group">
-                      <input type="text" class="form-control" id="nombreEscuela" name="nombreEscuela"
+                      <input type="text" class="form-control" id="solicNomInstitucion" name="solicNomInstitucion"
                         placeholder="Nombre de la Escuela" 
-                        #nombreEscuela="ngModel" [(ngModel)]="solicitudForm.nombreEscuela" required>
+                        #solicNomInstitucion="ngModel" [(ngModel)]="solicitudForm.solicNomInstitucion" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="localidadEscuela" name="localidadEscuela"
+                      <input type="text" class="form-control" id="solicLocInstitucion" name="solicLocInstitucion"
                         placeholder="Localidad de la Escuela" 
-                        #localidadEscuela="ngModel" [(ngModel)]="solicitudForm.localidadEscuela" required >
+                        #solicLocInstitucion="ngModel" [(ngModel)]="solicitudForm.solicLocInstitucion" required >
                     </div>
                     <div class="form-group row">
-                      <label for="fechaVisita" class="col-sm-4 col-form-label">Fecha de visita:</label>
+                      <label for="solicFechaVisita" class="col-sm-4 col-form-label">Fecha de visita:</label>
                       <div class="col-sm-8">
-                        <input type="date" class="form-control" id="fechaVisita" name="fechaVisita" 
-                        #fechaVisita="ngModel" [(ngModel)]="solicitudForm.fechaVisita" required>
+                        <input type="date" class="form-control" id="solicFechaVisita" name="solicFechaVisita" 
+                        #solicFechaVisita="ngModel" [(ngModel)]="solicFechaVisita.fechaVisita" required>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="horaVisita" class="col-sm-4 col-form-label">Hora estimada:</label>
+                      <label for="solicHoraVisita" class="col-sm-4 col-form-label">Hora estimada:</label>
                       <div class="col-sm-8">
-                        <input type="time" class="form-control" id="horaVisita" name="horaVisita" 
-                        #horaVisita="ngModel" [(ngModel)]="solicitudForm.horaVisita" required>
+                        <input type="time" class="form-control" id="solicHoraVisita" name="solicHoraVisita" 
+                        #solicHoraVisita="ngModel" [(ngModel)]="solicitudForm.solicHoraVisita" required>
                       </div>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="cantidadAlumnos" name="cantidadAlumnos"
+                      <input type="number" class="form-control" id="solicCantParticipantes" name="solicCantParticipantes"
                         placeholder="Cantidad de alumnos" 
-                        #cantidadAlumnos="ngModel" [(ngModel)]="solicitudForm.cantidadAlumnos" required>
+                        #solicCantParticipantes="ngModel" [(ngModel)]="solicitudForm.solicCantParticipantes" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="gradoAnio" name="gradoAnio" placeholder="Grado / Año" 
-                      #gradoAnio="ngModel" [(ngModel)]="solicitudForm.gradoAnio" required>
+                      <input type="text" class="form-control" id="solicGrado" name="solicGrado" placeholder="Grado / Año" 
+                      #solicGrado="ngModel" [(ngModel)]="solicitudForm.solicGrado" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="orientacion" name="orientacion"
+                      <input type="text" class="form-control" id="solicOrientacion" name="solicOrientacion"
                         placeholder="Orientación" 
-                        #orientacion="ngModel" [(ngModel)]="solicitudForm.orientacion" required>
+                        #solicOrientacion="ngModel" [(ngModel)]="solicitudForm.solicOrientacion" required>
                     </div>
 
 
@@ -147,35 +147,35 @@
                     <h6><span class="fa fa-user p-r-05"></span>DATOS DEL RESPONSABLE DEL GRUPO</h6>
 
                     <div class="form-group">
-                      <input type="text" class="form-control" id="responsableNombre" name="responsableNombre"
+                      <input type="text" class="form-control" id="solicNombreResp" name="solicNombreResp"
                         placeholder="Nombres del Responsable" 
-                        #responsableNombre="ngModel" [(ngModel)]="solicitudForm.responsableNombre" required>
+                        #solicNombreResp="ngModel" [(ngModel)]="solicitudForm.solicNombreResp" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="responsableApellido" name="responsableApellido"
+                      <input type="text" class="form-control" id="solicApellidoResp" name="solicApellidoResp"
                         placeholder="Apellido del Responsable" 
-                        #responsableApellido="ngModel" [(ngModel)]="solicitudForm.responsableApellido" required>
+                        #solicApellidoResp="ngModel" [(ngModel)]="solicitudForm.solicApellidoResp" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="responsableEmail" name="responsableEmail"
+                      <input type="text" class="form-control" id="solicMailResp" name="solicMailResp"
                         placeholder="Email" 
-                        #responsableEmail="ngModel" [(ngModel)]="solicitudForm.responsableEmail" required>
+                        #solicMailResp="ngModel" [(ngModel)]="solicitudForm.solicMailResp" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="responsableFijo" name="responsableFijo"
+                      <input type="text" class="form-control" id="solicTelfijoResp" name="solicTelfijoResp"
                         placeholder="Teléfono Fijo" 
-                        #responsableFijo="ngModel" [(ngModel)]="solicitudForm.responsableFijo" required>
+                        #solicTelfijoResp="ngModel" [(ngModel)]="solicitudForm.solicTelfijoResp" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="responsableCelular" name="responsableCelular"
+                      <input type="text" class="form-control" id="solicCelResp" name="solicCelResp"
                         placeholder="Teléfono Celular" 
-                        #responsableCelular="ngModel" [(ngModel)]="solicitudForm.responsableCelular" required>
+                        #solicCelResp="ngModel" [(ngModel)]="solicitudForm.solicCelResp" required>
                     </div>
 
                     <div class="form-group observaciones">
                       <h6><span class="fa fa-pencil p-r-05"></span>OBSERVACIONES / NOTA / INDICACIÓN</h6>
-                      <textarea class="form-control" id="observaciones" name="observaciones" rows="3" 
-                      #observaciones="ngModel" [(ngModel)]="solicitudForm.observaciones" required></textarea>
+                      <textarea class="form-control" id="solicObservaciones" name="solicObservaciones" rows="3" 
+                      #solicObservaciones="ngModel" [(ngModel)]="solicitudForm.solicObservaciones" required></textarea>
                     </div>
 
                     <div class="form-group div-boton-enviar">
