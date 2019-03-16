@@ -16,7 +16,7 @@ export class ContactoComponent implements OnInit {
   map: google.maps.Map;
   ancla: string;
   recibidoParams = { 'title': '', 'text': '', 'buttonText': '', 'sectioclass': '' };
-  modalParams = {'title':'','text':'','buttonText':'','buttonAction':''};
+  modalParams = { 'title': '', 'text': '', 'buttonText': '', 'buttonAction': '' };
   showSpinner: boolean = false;
   latitude: any;
   longitude: any;
@@ -33,7 +33,7 @@ export class ContactoComponent implements OnInit {
   borrarComentarioObject: any;
 
   constructor(private route: ActivatedRoute,
-    private loginService: LoginService, 
+    private loginService: LoginService,
     private cmsService: CmsService,
     private servicio: ServicioService,
     private _elementRef: ElementRef) { }
@@ -69,16 +69,16 @@ export class ContactoComponent implements OnInit {
     this.cmsService.getComments()
       .subscribe(result => {
         let comentarios: any = result;
-        if(!this.userLogued){
+        if (!this.userLogued) {
           comentarios.forEach(element => {
-            if(element.estado == 0){
+            if (element.estado == 0) {
               element.estado = 9;
-            }            
+            }
           });
           this.comentarios = comentarios;
-        }else{
+        } else {
           this.comentarios = result;
-        }        
+        }
       },
         error => {
           console.log('error', error);
@@ -86,13 +86,13 @@ export class ContactoComponent implements OnInit {
       );
   }
 
-  setEstrellas(tipo: number, cantidad: number){
+  setEstrellas(tipo: number, cantidad: number) {
     console.log('tipo', tipo);
     console.log('cantidad', cantidad);
     this.estrellasSeleccionadas[tipo] = cantidad;
   }
 
-  onSubmitSolicitud(formulario){
+  onSubmitSolicitud(formulario) {
     let data = formulario.form.value;
 
     var date_ = data.solicFechaVisita.split(/\-/);
@@ -102,14 +102,11 @@ export class ContactoComponent implements OnInit {
     this.servicio.sendSolicitud(data)
       .subscribe(result => {
         console.log('sendSolicitud result', result);
-
-        
-    this.recibidoParams.sectioclass = '';
-    this.recibidoParams.title = "Solicitud enviada.";
-    this.recibidoParams.text = "Su solicitud de visita ha sido enviada con éxito.";
-    this.recibidoParams.buttonText = "Cerrar";
-    this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
-
+        this.recibidoParams.sectioclass = '';
+        this.recibidoParams.title = "Solicitud enviada.";
+        this.recibidoParams.text = "Su solicitud de visita ha sido enviada con éxito.";
+        this.recibidoParams.buttonText = "Cerrar";
+        this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
       },
         error => {
           console.log('error', error);
@@ -127,7 +124,7 @@ export class ContactoComponent implements OnInit {
     data.general = this.estrellasSeleccionadas[4];
     console.log('data', data);
     this.showSpinner = true;
-    
+
     setTimeout(() => {
       this.showSpinner = false;
       this.recibidoParams.sectioclass = '';
@@ -136,10 +133,10 @@ export class ContactoComponent implements OnInit {
       this.recibidoParams.buttonText = "Cerrar";
       this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
     }, 1000);
-      
-        //error de usuario
-        //this.showModal();
-    
+
+    //error de usuario
+    //this.showModal();
+
   }
 
   actionConfirmedClicked() {
@@ -153,17 +150,17 @@ export class ContactoComponent implements OnInit {
       );
   }
 
-  borrarComentario(comentario){
+  borrarComentario(comentario) {
     console.log('borrarComentario');
     this.borrarComentarioObject = comentario;
     this.modalParams.title = "Cuidado.";
     this.modalParams.text = "Está seguro que desea eliminar el comentario?";
     this.modalParams.buttonText = "Borrar";
     this.modalParams.buttonAction = "actionConfirmedClicked";
-    this._elementRef.nativeElement.querySelector('#open-modal-confirm').click();    
+    this._elementRef.nativeElement.querySelector('#open-modal-confirm').click();
   }
 
-  guardarComentario(comentario, estado){
+  guardarComentario(comentario, estado) {
     comentario.estado = estado;
     this.cmsService.saveComment(comentario)
       .subscribe(result => {
@@ -173,9 +170,9 @@ export class ContactoComponent implements OnInit {
           console.log('error', error);
         }
       );
-  } 
+  }
 
-  ocultarComentario(comentario){
+  ocultarComentario(comentario) {
     console.log('ocultarComentario');
   }
 
