@@ -15,7 +15,8 @@
       <div class="col-6 nopadding">
           <button class="btn btn-epec-verde-claro btn-rounded btn-small" type="button" data-toggle="collapse"
           data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
-          (click)="goToFormularioVisitasGuiadas()">
+          (click)="goToFormularioVisitasGuiadas()"
+          *ngIf="!solicitudFormEnviada">
           ¡QUIERO VISITAR EL MUSEO!
         </button>
       </div>
@@ -83,7 +84,7 @@
 
     <div class="row">
       <div class="col-12">
-        <div class="formulario-visitas-guiadas" id="formulario-visitas-guiadas">
+        <div class="formulario-visitas-guiadas" id="formulario-visitas-guiadas" *ngIf="!solicitudFormEnviada">
           <p><br></p>
           <p>
             <button class="btn btn-epec-verde-claro btn-rounded" type="button" data-toggle="collapse"

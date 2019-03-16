@@ -31,6 +31,7 @@ export class ContactoComponent implements OnInit {
   estrellasGeneral: number = 0;
   estrellasSeleccionadas: number[] = [];
   borrarComentarioObject: any;
+  solicitudFormEnviada: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private loginService: LoginService,
@@ -107,9 +108,17 @@ export class ContactoComponent implements OnInit {
         this.recibidoParams.text = "Su solicitud de visita ha sido enviada con éxito.";
         this.recibidoParams.buttonText = "Cerrar";
         this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
+        this.solicitudFormEnviada = true;
       },
         error => {
           console.log('error', error);
+
+          this.recibidoParams.sectioclass = 'alert';
+          this.recibidoParams.title = "Error.";
+          this.recibidoParams.text = "Hubo un error al enviar la solicitud, por favor intente más tarde.";
+          this.recibidoParams.buttonText = "Cerrar";
+          this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
+
         }
       );
     console.log("data", data);
