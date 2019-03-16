@@ -10,8 +10,8 @@ export class ServicioService {
 
   apiEndpoint = environment.apiEndpoint;
   //apiEndpointDev = null;
-  //apiEndpointDev = 'http://localhost:8090/';
-  apiEndpointDev = "http://192.168.109.47:8040/";
+  apiEndpointDev = 'http://localhost:8090/';
+  //apiEndpointDev = "http://192.168.109.47:8040/";
   
   constructor(private httpClient: HttpClient) { }
 
@@ -33,9 +33,38 @@ export class ServicioService {
   }
 
   getPonderables(): Observable<any> {
-    return this.httpClient.get("/media/cms/ponderables.json");
-    /*let httpOptions = this.getHeader();
-    return this.httpClient.get(this.apiEndpointDev+"usuarios/motivos-baja", httpOptions)*/
+    if (this.apiEndpointDev != null) {
+      let httpOptions = this.getHeader();
+      return this.httpClient.get(this.apiEndpointDev + "comentarios/ponderables", httpOptions);
+    } else {
+      return this.httpClient.get("/media/cms/ponderables.json");
+    }
+  }
+
+  getComments(): Observable<any> {
+    if (this.apiEndpointDev != null) {
+      let httpOptions = this.getHeader();
+      return this.httpClient.get(this.apiEndpointDev + "comentarios", httpOptions);
+    } else {
+    return this.httpClient.get("/media/cms/comentarios.json");
+    }
+  }
+
+  getCommentsModerate(): Observable<any> {
+    if (this.apiEndpointDev != null) {
+      let httpOptions = this.getHeader();
+      return this.httpClient.get(this.apiEndpointDev + "comentarios/moderar", httpOptions);
+    } else {
+    return this.httpClient.get("/media/cms/comentarios.json");
+    }
+  }
+
+  saveComment(comentario){
+    let httpOptions = this.getHeader();
+    return this.httpClient.post(this.apiEndpointDev + "comentarios/moderar", comentario, httpOptions)
+    .pipe(
+      //console.log('showComment service');
+    );
   }
 
   getHeader() {

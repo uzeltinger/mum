@@ -63,23 +63,43 @@ export class ContactoComponent implements OnInit {
       console.log('this.userLogued', this.userLogued);
     }
     this.getPonderables();
-    this.getComments();
+    if(this.userLogued == true){
+      this.getCommentsModerate();
+    }else{
+      this.getComments();
+    }    
   }
 
   getComments() {
-    this.cmsService.getComments()
+    this.servicio.getComments()
       .subscribe(result => {
         let comentarios: any = result;
-        if (!this.userLogued) {
+        let comentariosArray: any = [];
+        console.log("result",result);
+        
           comentarios.forEach(element => {
-            if (element.estado == 0) {
-              element.estado = 9;
+            if (!comentariosArray[element.id]) {
+              comentariosArray[element.id] = [];
+              comentariosArray[element.id] = {
+                "id":element.id,
+                "comentNombre":element.comentNombre,
+                "comentDescripcion":element.comentDescripcion,
+                "comentFechaAlta":element.comentFechaAlta,
+                "ponderables": []
+              };
             }
+            let ponderable = {"itemsPonderables":element.itemsPonderables,"cantPonderada":element.cantPonderada}
+            comentariosArray[element.id].ponderables.push(ponderable);
+            
           });
-          this.comentarios = comentarios;
-        } else {
-          this.comentarios = result;
-        }
+
+          comentariosArray.forEach(comentario => {
+            this.comentarios.push(comentario);
+          });
+
+          console.log('comentariosArray', comentariosArray);
+          console.log('this.comentarios', this.comentarios);
+        
       },
         error => {
           console.log('error', error);
@@ -155,11 +175,13 @@ export class ContactoComponent implements OnInit {
 
     this.ponderables.forEach(element => {
       itemPonderableNumero = itemPonderableNumero + "\"" + element.id + "\"";     
-      cantPonderada = cantPonderada + "\"" + this.estrellasSeleccionadas[element.id];
+      cantPonderada = cantPonderada + "\"" + this.estrellasSeleccionadas[element.id]+ "\"";
       next++;
       if(next<this.ponderables.length){
         itemPonderableNumero = itemPonderableNumero + ",";
         cantPonderada = cantPonderada + ",";
+      }else{
+
       }
       if(this.estrellasSeleccionadas[element.id]==0){
       validar = validar + "<br>Debe valorar todos los items";
@@ -222,6 +244,42 @@ export class ContactoComponent implements OnInit {
     }
   }
 
+  getCommentsModerate(){
+    this.servicio.getCommentsModerate()
+    .subscribe(result => {
+      let comentarios: any = result;
+      let comentariosArray: any = [];
+      console.log("result",result);
+      
+        comentarios.forEach(element => {
+          if (!comentariosArray[element.id]) {
+            comentariosArray[element.id] = [];
+            comentariosArray[element.id] = {
+              "id":element.id,
+              "comentNombre":element.comentNombre,
+              "comentDescripcion":element.comentDescripcion,
+              "comentFechaAlta":element.comentFechaAlta,
+              "ponderables": []
+            };
+          }
+          let ponderable = {"itemsPonderables":element.itemsPonderables,"cantPonderada":element.cantPonderada}
+          comentariosArray[element.id].ponderables.push(ponderable);
+          
+        });
+
+        comentariosArray.forEach(comentario => {
+          this.comentarios.push(comentario);
+        });
+
+        console.log('comentariosArray', comentariosArray);
+        console.log('this.comentarios', this.comentarios);
+      
+    },
+      error => {
+        console.log('error', error);
+      }
+    );
+  }
   actionConfirmedClicked() {
     this.cmsService.deleteComment(this.borrarComentarioObject.id)
       .subscribe(result => {
@@ -244,10 +302,13 @@ export class ContactoComponent implements OnInit {
   }
 
   guardarComentario(comentario, estado) {
+    let dataSend = {"comentarioNumero":comentario.id,"comentarioEstado":estado}
     comentario.estado = estado;
-    this.cmsService.saveComment(comentario)
+    this.servicio.saveComment(dataSend)
       .subscribe(result => {
-        comentario.estado = estado;
+        if(result==true){
+          this.comentarios = this.comentarios.filter(entity => entity.id !== comentario.id);
+        }
       },
         error => {
           console.log('error', error);
