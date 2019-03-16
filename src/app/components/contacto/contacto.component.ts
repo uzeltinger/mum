@@ -32,6 +32,9 @@ export class ContactoComponent implements OnInit {
   estrellasSeleccionadas: number[] = [];
   borrarComentarioObject: any;
   solicitudFormEnviada: boolean = false;
+  ponderables: any;
+  ponderablesById: any = [];
+  totalPonderables: number;
 
   constructor(private route: ActivatedRoute,
     private loginService: LoginService,
@@ -59,11 +62,8 @@ export class ContactoComponent implements OnInit {
       this.userLogued = true;
       console.log('this.userLogued', this.userLogued);
     }
+    this.getPonderables();
     this.getComments();
-    this.estrellasSeleccionadas[1] = 0;
-    this.estrellasSeleccionadas[2] = 0;
-    this.estrellasSeleccionadas[3] = 0;
-    this.estrellasSeleccionadas[4] = 0;
   }
 
   getComments() {
@@ -124,28 +124,102 @@ export class ContactoComponent implements OnInit {
     console.log("data", data);
   }
 
-  onSubmit(formulario) {
-    // this.showSpinner = true;
+  getPonderables() {
+    this.servicio.getPonderables()
+      .subscribe(result => {
+        this.ponderables = result;
+        this.ponderablesById = [];
+        this.ponderables.forEach(element => {
+          this.estrellasSeleccionadas[element.id] = 0;
+          this.ponderablesById[element.id] = element;
+          this.totalPonderables = this.ponderables.length;
+        });
+        console.log('this.ponderables', this.ponderables);    
+        console.log('this.ponderablesById', this.ponderablesById);    
+        console.log('this.totalPonderables', this.totalPonderables);     
+      },
+        error => {
+          console.log('error', error);
+        }
+      );
+  };
+
+  onSubmitComentario(formulario) {
+    // this.showSpinner = true; itemPonderableNumero
     let data = formulario.form.value;
-    data.atencion = this.estrellasSeleccionadas[1];
-    data.facilidad = this.estrellasSeleccionadas[2];
-    data.entorno = this.estrellasSeleccionadas[3];
-    data.general = this.estrellasSeleccionadas[4];
-    console.log('data', data);
-    this.showSpinner = true;
+    let itemPonderableNumero: string = "";
+    let cantPonderada: string = "";
+    let validar: string = "";
+    let errorDeDatos: boolean = false;
+    let next: number = 0;
 
-    setTimeout(() => {
-      this.showSpinner = false;
-      this.recibidoParams.sectioclass = '';
-      this.recibidoParams.title = "Exito.";
-      this.recibidoParams.text = "Gracias por enviar su comentario";
-      this.recibidoParams.buttonText = "Cerrar";
+    this.ponderables.forEach(element => {
+      itemPonderableNumero = itemPonderableNumero + "\"" + element.id + "\"";     
+      cantPonderada = cantPonderada + "\"" + this.estrellasSeleccionadas[element.id];
+      next++;
+      if(next<this.ponderables.length){
+        itemPonderableNumero = itemPonderableNumero + ",";
+        cantPonderada = cantPonderada + ",";
+      }
+      if(this.estrellasSeleccionadas[element.id]==0){
+      validar = validar + "<br>Debe valorar todos los items";
+      errorDeDatos = true;
+      }
+    });
+
+    if (data.comentNombre == "") {
+      validar = validar + "<br>Debe ingresar el nombre";
+      errorDeDatos = true;
+    }
+    if (data.comentDescripcion == "") {
+      validar = validar + "<br>Debe ingresar el comentario";
+      errorDeDatos = true;
+    }
+
+    if (errorDeDatos) {
+      this.recibidoParams.sectioclass = "alert";
+      this.recibidoParams.title = "Campos inválidos.";
+      this.recibidoParams.text = "Por favor verifique todos los campos ingresados.<br>" + validar;
+      this.recibidoParams.buttonText = "Listo";
       this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
-    }, 1000);
+    } else {
+      data.itemPonderableNumero = itemPonderableNumero;
+      data.cantPonderada = cantPonderada;
+      console.log('data', data);
+      this.showSpinner = true;
 
-    //error de usuario
-    //this.showModal();
-
+      this.servicio.sendComentario(data)
+        .subscribe(result => {
+          console.log('sendComentario result', result);
+          this.showSpinner = false;
+          this.recibidoParams.sectioclass = '';
+          this.recibidoParams.title = "Exito.";
+          this.recibidoParams.text = "Gracias por enviar su comentario";
+          this.recibidoParams.buttonText = "Cerrar";
+          this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
+          this.solicitudFormEnviada = true;
+        },
+          error => {
+            console.log('error', error);
+            this.showSpinner = false;
+            this.recibidoParams.sectioclass = 'alert';
+            this.recibidoParams.title = "Error.";
+            this.recibidoParams.text = "Hubo un error al enviar la solicitud, por favor intente más tarde.";
+            this.recibidoParams.buttonText = "Cerrar";
+            this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
+          }
+        );
+      /*
+      setTimeout(() => {
+        this.showSpinner = false;
+        this.recibidoParams.sectioclass = '';
+        this.recibidoParams.title = "Exito.";
+        this.recibidoParams.text = "Gracias por enviar su comentario";
+        this.recibidoParams.buttonText = "Cerrar";
+        this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
+      }, 1000);
+      */
+    }
   }
 
   actionConfirmedClicked() {

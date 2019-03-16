@@ -1,0 +1,18 @@
+[
+    {
+        "id" : 3,
+        "nombre": "tercer ponderable"
+    },
+    {
+        "id" : 4,
+        "nombre": "cuarto ponderable"
+    },
+    {
+        "id" : 2,
+        "nombre": "segundo ponderable"
+    },
+    {
+        "id" : 1,
+        "nombre": "primer ponderable"
+    }
+]

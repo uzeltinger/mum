@@ -210,7 +210,7 @@
       <div class="col-12">
         <div class="card card-body">
           
-            <form (ngSubmit)="onSubmit(commentForm)" #commentForm="ngForm" class="user-forms">
+            <form (ngSubmit)="onSubmitComentario(commentForm)" #commentForm="ngForm" class="user-forms">
                 
 
             <div class="form-group">
@@ -218,7 +218,7 @@
                   class="fa fa-user p-r-05 epec-color-verde-claro"></span>Escriba su nombre y apellido, colegio o
                 institución</label>
 
-                <input type="text" #nombre="ngModel" [(ngModel)]="commentForm.nombre" name="nombre" id="nombre"
+                <input type="text" #comentNombre="ngModel" [(ngModel)]="commentForm.comentNombre" name="comentNombre" id="comentNombre"
                 class="form-control" required>
 
             </div>
@@ -227,46 +227,22 @@
 
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Escriba aquí su comentario</label>
-              <textarea class="form-control" id="comentario" rows="3"  #comentario="ngModel" [(ngModel)]="commentForm.comentario" name="comentario" id="comentario"></textarea>
+              <textarea class="form-control" id="comentDescripcion" rows="3"  #comentDescripcion="ngModel" [(ngModel)]="commentForm.comentDescripcion" name="comentDescripcion" id="comentDescripcion"></textarea>
             </div>
+
+
+
 
             <div class="add-comment-bottom">
               <div class="comment-form-left">
-                <div class="star-row">
+                <div class="star-row" *ngFor="let ponderable of ponderables; indexPonderable as iP">
                   <div class="text">
-                    Atención de los guías:
+                    {{ponderable.nombre}}:
                   </div>
                   <div class="stars">
-                      <span *ngFor="let estrella of estrellas;index as i" class="addStar fa fa-star" [ngClass]="  (estrellasSeleccionadas[1] > i) ? 'star-full' : 'star-empty' " (click)="setEstrellas(1,i+1)"></span>
+                      <span *ngFor="let estrella of estrellas;index as i" class="addStar fa fa-star" [ngClass]="  (estrellasSeleccionadas[ponderable.id] > i) ? 'star-full' : 'star-empty' " (click)="setEstrellas(ponderable.id,i+1)"></span>
                   </div>
                 </div>
-                <div class="star-row">
-                  <div class="text">
-                    Facilidad para llegar:
-                  </div>
-                  <div class="stars">
-                      <span *ngFor="let estrella of estrellas;index as i" class="addStar fa fa-star" [ngClass]="  (estrellasSeleccionadas[2] > i) ? 'star-full' : 'star-empty' " (click)="setEstrellas(2,i+1)"></span>
-                  </div>
-                </div>
-                <div class="star-row">
-                  <div class="text">
-                    Entorno del lugar:
-                  </div>
-                  <div class="stars">
-                      <span *ngFor="let estrella of estrellas;index as i" class="addStar fa fa-star" [ngClass]="  (estrellasSeleccionadas[3] > i) ? 'star-full' : 'star-empty' " (click)="setEstrellas(3,i+1)"></span>
-                  </div>
-                </div>
-                <div class="star-row">
-                  <div class="text">
-                    El museo en general
-                  </div>
-                  <div class="stars">
-                      <span *ngFor="let estrella of estrellas;index as i" class="addStar fa fa-star" [ngClass]="  (estrellasSeleccionadas[4] > i) ? 'star-full' : 'star-empty' " (click)="setEstrellas(4,i+1)"></span>
-                  </div>
-                </div>
-
-
-
 
               </div>
               <div class="comment-form-right">
@@ -275,7 +251,7 @@
                 </button>
               </div>
 
-            </div>
+            </div>            
 
           </form>
         </div>
