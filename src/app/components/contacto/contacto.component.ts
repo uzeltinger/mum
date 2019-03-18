@@ -157,6 +157,10 @@ export class ContactoComponent implements OnInit {
     console.log("data", data);
   }
 
+  constanciaClosed(dataFromPopup){
+    console.log("constanciaClosed",dataFromPopup);
+  }
+
   getPonderables() {
     this.servicio.getPonderables()
       .subscribe(result => {
