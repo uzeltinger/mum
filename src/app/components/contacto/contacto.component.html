@@ -296,7 +296,7 @@
 
 <div *ngIf="showSpinner" class="spinner"></div>
 <div *ngIf="showSpinner" class="loader"></div>
-
+<app-constancia [constanciaParams]=constanciaParams (constanciaClosed)="constanciaClosed($event)"></app-constancia>
 
 <section class="modal-info {{recibidoParams.sectioclass}}">
   <div class="modal fade" id="modalrecibido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

@@ -1,0 +1,108 @@
+<section class="constancia">
+  <div class="modal fade" id="modalConstancia" aria-labelledby="modalConstanciaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-constancia" role="document" id="imprimir-constancia">
+      <div class="modal-content">
+
+        <div class="constancia-header">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="logo">
+                  <img src="/assets/template/images/oficina-virtual/logo-oficina-virtual-plus.png">
+                </div>
+                <div class="constancia-header-imagen">
+                  <img src="/media/images/constancia/imprimir-constancia-cabecera.jpg">
+                </div>
+                <div class="titulo">{{constanciaParams.titulo}}</div>
+                <div class="imprimir doNotPrint" style="display: none">
+                  <button class="btn-imprimir" type="button" name="imprimir" (click)="printConstancia()"><span
+                      class="fa fa-print"></span>IMPRIMIR</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nueva-constancia-datos">
+          <div class="columna-derecha">
+
+            <div *ngIf="constanciaParams.tipoDeConstancia=='solicitudDeVisita'">
+              <h4 *ngIf="now">Fecha: {{now}}</h4>
+              <h4 *ngIf="constanciaParams.solicNumero">Nro. constancia: {{constanciaParams.solicNumero}}</h4>
+            </div>
+
+          </div>
+
+          <div class="columna-izquierda">
+
+            <div *ngIf="constanciaParams.tipoDeConstancia=='solicitudDeVisita'">
+
+              <p><b>Datos de la escuela o institución:</b>
+                <span *ngIf="constanciaParams.nomInstitucion">
+                  <br>Nombre de la Escuela: {{constanciaParams.nomInstitucion}}</span>
+                <span *ngIf="constanciaParams.locInstitucion">
+                  <br>Localidad de la Escuela: {{constanciaParams.locInstitucion}}</span>
+                <span *ngIf="constanciaParams.fechaVisita">
+                  <br>Fecha de visita: {{constanciaParams.fechaVisita}}</span>
+                <span *ngIf="constanciaParams.horaVisita">
+                  <br>Hora estimada: {{constanciaParams.horaVisita}}</span>
+                <span *ngIf="constanciaParams.cantParticipantes">
+                  <br>Cantidad de alumnos: {{constanciaParams.cantParticipantes}}</span>
+                <span *ngIf="constanciaParams.grado">
+                  <br>Grado / Año: {{constanciaParams.grado}}</span>
+                <span *ngIf="constanciaParams.orientacion">
+                  <br>Orientación: {{constanciaParams.orientacion}}</span>
+              </p>
+
+              <p><b>Datos del responsable del grupo:</b>
+                <span *ngIf="constanciaParams.nombreResp">
+                  <br>Nombres del Responsable: {{constanciaParams.nombreResp}}</span>
+                <span *ngIf="constanciaParams.apellidoResp">
+                  <br>Apellido del Responsable: {{constanciaParams.apellidoResp}}</span>
+                <span *ngIf="constanciaParams.mailResp">
+                  <br>Email: {{constanciaParams.mailResp}}</span>
+                <span *ngIf="constanciaParams.telfijoResp">
+                  <br>Teléfono Fijo: {{constanciaParams.telfijoResp}}</span>
+                <span *ngIf="constanciaParams.celResp">
+                  <br>Teléfono Celular: {{constanciaParams.celResp}}</span>
+              </p>
+
+              <p><b>Observaciones / Nota / Indicación</b>
+                <span *ngIf="constanciaParams.observaciones">
+                  <br>{{constanciaParams.observaciones}}</span>
+              </p>
+            </div>
+
+
+          </div>
+
+          <div class="columna-central">
+
+
+
+
+          </div>
+        </div>
+
+        <div class="constancia-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <button type="button" class="btn btn-epec-empty waves-effect float-right mt-4 doNotPrint"
+                  data-dismiss="modal" style="display: none" (click)="constanciaClosedClicked()">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="constancia-footer-imagen">
+          <img src="/media/images/constancia/imprimir-constancia-pie.jpg">
+        </div>
+        <a style="display: none" id="close-modal" data-dismiss="modal">close-modal</a>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<a style="display: none" id="open-constancia" data-toggle="modal" data-target="#modalConstancia">Popup</a>

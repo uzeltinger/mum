@@ -17,6 +17,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { SalasComponent } from './components/salas/salas.component';
 import { LoginComponent } from './components/login/login.component';
 import { ServicioService } from './services/servicio/servicio.service';
+import { ConstanciaComponent } from './components/template/constancia/constancia.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ServicioService } from './services/servicio/servicio.service';
     HistoriaComponent,
     ContactoComponent,
     SalasComponent,
-    LoginComponent
+    LoginComponent,
+    ConstanciaComponent
   ],
   imports: [
     BrowserModule, RouterModule, AppRoutingModule, BrowserAnimationsModule, GoTopButtonModule,   

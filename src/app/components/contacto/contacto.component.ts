@@ -4,6 +4,7 @@ import { } from '@types/googlemaps';
 import { LoginService } from 'src/app/services/login/login.service';
 import { CmsService } from 'src/app/services/cms/cms.service';
 import { ServicioService } from 'src/app/services/servicio/servicio.service';
+import { Constancia } from 'src/app/models/constancia';
 
 @Component({
   selector: 'app-contacto',
@@ -35,14 +36,13 @@ export class ContactoComponent implements OnInit {
   ponderables: any;
   ponderablesById: any = [];
   totalPonderables: number;
+  constanciaParams: Constancia = new Constancia;
 
   constructor(private route: ActivatedRoute,
     private loginService: LoginService,
     private cmsService: CmsService,
     private servicio: ServicioService,
     private _elementRef: ElementRef) { }
-
-
 
   ngOnInit() {
 
@@ -63,11 +63,11 @@ export class ContactoComponent implements OnInit {
       console.log('this.userLogued', this.userLogued);
     }
     this.getPonderables();
-    if(this.userLogued == true){
+    if (this.userLogued == true) {
       this.getCommentsModerate();
-    }else{
+    } else {
       this.getComments();
-    }    
+    }
   }
 
   getComments() {
@@ -75,31 +75,31 @@ export class ContactoComponent implements OnInit {
       .subscribe(result => {
         let comentarios: any = result;
         let comentariosArray: any = [];
-        console.log("result",result);
-        
-          comentarios.forEach(element => {
-            if (!comentariosArray[element.id]) {
-              comentariosArray[element.id] = [];
-              comentariosArray[element.id] = {
-                "id":element.id,
-                "comentNombre":element.comentNombre,
-                "comentDescripcion":element.comentDescripcion,
-                "comentFechaAlta":element.comentFechaAlta,
-                "ponderables": []
-              };
-            }
-            let ponderable = {"itemsPonderables":element.itemsPonderables,"cantPonderada":element.cantPonderada}
-            comentariosArray[element.id].ponderables.push(ponderable);
-            
-          });
+        console.log("result", result);
 
-          comentariosArray.forEach(comentario => {
-            this.comentarios.push(comentario);
-          });
+        comentarios.forEach(element => {
+          if (!comentariosArray[element.id]) {
+            comentariosArray[element.id] = [];
+            comentariosArray[element.id] = {
+              "id": element.id,
+              "comentNombre": element.comentNombre,
+              "comentDescripcion": element.comentDescripcion,
+              "comentFechaAlta": element.comentFechaAlta,
+              "ponderables": []
+            };
+          }
+          let ponderable = { "itemsPonderables": element.itemsPonderables, "cantPonderada": element.cantPonderada }
+          comentariosArray[element.id].ponderables.push(ponderable);
 
-          console.log('comentariosArray', comentariosArray);
-          console.log('this.comentarios', this.comentarios);
-        
+        });
+
+        comentariosArray.forEach(comentario => {
+          this.comentarios.push(comentario);
+        });
+
+        console.log('comentariosArray', comentariosArray);
+        console.log('this.comentarios', this.comentarios);
+
       },
         error => {
           console.log('error', error);
@@ -122,13 +122,26 @@ export class ContactoComponent implements OnInit {
 
     this.servicio.sendSolicitud(data)
       .subscribe(result => {
-        console.log('sendSolicitud result', result);
-        this.recibidoParams.sectioclass = '';
-        this.recibidoParams.title = "Solicitud enviada.";
-        this.recibidoParams.text = "Su solicitud de visita ha sido enviada con éxito.";
-        this.recibidoParams.buttonText = "Cerrar";
-        this._elementRef.nativeElement.querySelector('#open-modal-recibido').click();
+        console.log('sendSolicitud result', result);        
         this.solicitudFormEnviada = true;
+        this.constanciaParams.tipoDeConstancia = "solicitudDeVisita";
+        this.constanciaParams.titulo = "Constancia de solicitud de visita";
+        this.constanciaParams.solicNumero = result.solicNumero;
+        this.constanciaParams.nomInstitucion = result.nomInstitucion;
+        this.constanciaParams.locInstitucion = result.locInstitucion;
+        this.constanciaParams.fechaVisita = result.fechaVisita;
+        this.constanciaParams.horaVisita = result.horaVisita;
+        this.constanciaParams.cantParticipantes = result.cantParticipantes;
+        this.constanciaParams.grado = result.grado;
+        this.constanciaParams.orientacion = result.orientacion;
+        this.constanciaParams.nombreResp = result.nombreResp;
+        this.constanciaParams.apellidoResp = result.apellidoResp;
+        this.constanciaParams.mailResp = result.mailResp;
+        this.constanciaParams.telfijoResp = result.telfijoResp;
+        this.constanciaParams.celResp = result.celResp;
+        this.constanciaParams.observaciones = result.observaciones;
+
+        this._elementRef.nativeElement.querySelector('#open-constancia').click();
       },
         error => {
           console.log('error', error);
@@ -154,9 +167,9 @@ export class ContactoComponent implements OnInit {
           this.ponderablesById[element.id] = element;
           this.totalPonderables = this.ponderables.length;
         });
-        console.log('this.ponderables', this.ponderables);    
-        console.log('this.ponderablesById', this.ponderablesById);    
-        console.log('this.totalPonderables', this.totalPonderables);     
+        console.log('this.ponderables', this.ponderables);
+        console.log('this.ponderablesById', this.ponderablesById);
+        console.log('this.totalPonderables', this.totalPonderables);
       },
         error => {
           console.log('error', error);
@@ -174,18 +187,18 @@ export class ContactoComponent implements OnInit {
     let next: number = 0;
 
     this.ponderables.forEach(element => {
-      itemPonderableNumero = itemPonderableNumero + "\"" + element.id + "\"";     
-      cantPonderada = cantPonderada + "\"" + this.estrellasSeleccionadas[element.id]+ "\"";
+      itemPonderableNumero = itemPonderableNumero + "\"" + element.id + "\"";
+      cantPonderada = cantPonderada + "\"" + this.estrellasSeleccionadas[element.id] + "\"";
       next++;
-      if(next<this.ponderables.length){
+      if (next < this.ponderables.length) {
         itemPonderableNumero = itemPonderableNumero + ",";
         cantPonderada = cantPonderada + ",";
-      }else{
+      } else {
 
       }
-      if(this.estrellasSeleccionadas[element.id]==0){
-      validar = validar + "<br>Debe valorar todos los items";
-      errorDeDatos = true;
+      if (this.estrellasSeleccionadas[element.id] == 0) {
+        validar = validar + "<br>Debe valorar todos los items";
+        errorDeDatos = true;
       }
     });
 
@@ -244,27 +257,27 @@ export class ContactoComponent implements OnInit {
     }
   }
 
-  getCommentsModerate(){
+  getCommentsModerate() {
     this.servicio.getCommentsModerate()
-    .subscribe(result => {
-      let comentarios: any = result;
-      let comentariosArray: any = [];
-      console.log("result",result);
-      
+      .subscribe(result => {
+        let comentarios: any = result;
+        let comentariosArray: any = [];
+        console.log("result", result);
+
         comentarios.forEach(element => {
           if (!comentariosArray[element.id]) {
             comentariosArray[element.id] = [];
             comentariosArray[element.id] = {
-              "id":element.id,
-              "comentNombre":element.comentNombre,
-              "comentDescripcion":element.comentDescripcion,
-              "comentFechaAlta":element.comentFechaAlta,
+              "id": element.id,
+              "comentNombre": element.comentNombre,
+              "comentDescripcion": element.comentDescripcion,
+              "comentFechaAlta": element.comentFechaAlta,
               "ponderables": []
             };
           }
-          let ponderable = {"itemsPonderables":element.itemsPonderables,"cantPonderada":element.cantPonderada}
+          let ponderable = { "itemsPonderables": element.itemsPonderables, "cantPonderada": element.cantPonderada }
           comentariosArray[element.id].ponderables.push(ponderable);
-          
+
         });
 
         comentariosArray.forEach(comentario => {
@@ -273,12 +286,12 @@ export class ContactoComponent implements OnInit {
 
         console.log('comentariosArray', comentariosArray);
         console.log('this.comentarios', this.comentarios);
-      
-    },
-      error => {
-        console.log('error', error);
-      }
-    );
+
+      },
+        error => {
+          console.log('error', error);
+        }
+      );
   }
   actionConfirmedClicked() {
     this.cmsService.deleteComment(this.borrarComentarioObject.id)
@@ -302,11 +315,11 @@ export class ContactoComponent implements OnInit {
   }
 
   guardarComentario(comentario, estado) {
-    let dataSend = {"comentarioNumero":comentario.id,"comentarioEstado":estado}
+    let dataSend = { "comentarioNumero": comentario.id, "comentarioEstado": estado }
     comentario.estado = estado;
     this.servicio.saveComment(dataSend)
       .subscribe(result => {
-        if(result==true){
+        if (result == true) {
           this.comentarios = this.comentarios.filter(entity => entity.id !== comentario.id);
         }
       },
