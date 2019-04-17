@@ -78,10 +78,11 @@ export class ContactoComponent implements OnInit {
         console.log("result", result);
 
         comentarios.forEach(element => {
-          if (!comentariosArray[element.id]) {
-            comentariosArray[element.id] = [];
-            comentariosArray[element.id] = {
-              "id": element.id,
+          if (!comentariosArray[element.comentNumero]) {
+            comentariosArray[element.comentNumero] = [];
+            comentariosArray[element.comentNumero] = {
+              "comentId": element.comentId,
+              "comentNumero": element.comentNumero,
               "comentNombre": element.comentNombre,
               "comentDescripcion": element.comentDescripcion,
               "comentFechaAlta": element.comentFechaAlta,
@@ -89,7 +90,7 @@ export class ContactoComponent implements OnInit {
             };
           }
           let ponderable = { "itemsPonderables": element.itemsPonderables, "cantPonderada": element.cantPonderada }
-          comentariosArray[element.id].ponderables.push(ponderable);
+          comentariosArray[element.comentNumero].ponderables.push(ponderable);
 
         });
 
@@ -269,10 +270,11 @@ export class ContactoComponent implements OnInit {
         console.log("result", result);
 
         comentarios.forEach(element => {
-          if (!comentariosArray[element.id]) {
-            comentariosArray[element.id] = [];
-            comentariosArray[element.id] = {
-              "id": element.id,
+          if (!comentariosArray[element.comentNumero]) {
+            comentariosArray[element.comentNumero] = [];
+            comentariosArray[element.comentNumero] = {
+              "comentId": element.comentId,
+              "comentNumero": element.comentNumero,
               "comentNombre": element.comentNombre,
               "comentDescripcion": element.comentDescripcion,
               "comentFechaAlta": element.comentFechaAlta,
@@ -280,7 +282,7 @@ export class ContactoComponent implements OnInit {
             };
           }
           let ponderable = { "itemsPonderables": element.itemsPonderables, "cantPonderada": element.cantPonderada }
-          comentariosArray[element.id].ponderables.push(ponderable);
+          comentariosArray[element.comentNumero].ponderables.push(ponderable);
 
         });
 
@@ -319,12 +321,12 @@ export class ContactoComponent implements OnInit {
   }
 
   guardarComentario(comentario, estado) {
-    let dataSend = { "comentarioNumero": comentario.id, "comentarioEstado": estado }
+    let dataSend = { "comentarioNumero": comentario.comentNumero, "comentarioEstado": estado }
     comentario.estado = estado;
     this.servicio.saveComment(dataSend)
       .subscribe(result => {
         if (result == true) {
-          this.comentarios = this.comentarios.filter(entity => entity.id !== comentario.id);
+          this.comentarios = this.comentarios.filter(entity => entity.comentNumero !== comentario.comentNumero);
         }
       },
         error => {

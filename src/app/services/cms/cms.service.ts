@@ -13,9 +13,9 @@ export class CmsService {
 
   apiEndpoint = environment.apiEndpoint;
   slideHome: any = [];
-  apiEndpointDev = null;
+  //apiEndpointDev = null;
   //apiEndpointDev = 'http://192.168.109.151:8070';
-  //apiEndpointDev = 'http://127.0.0.1:8080/';
+  apiEndpointDev = 'http://127.0.0.1:8090/';
   query: string = "";
   resultsCached: any= null;
   destacadosCached: any= [];

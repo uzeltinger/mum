@@ -10,8 +10,8 @@ export class ServicioService {
 
   apiEndpoint = environment.apiEndpoint;
   //apiEndpointDev = null;
-  //apiEndpointDev = 'http://localhost:8090/';
-  apiEndpointDev = "http://192.168.109.47:8040/";
+  apiEndpointDev = 'http://localhost:8090/';
+  //apiEndpointDev = "http://192.168.109.47:8040/";
   
   constructor(private httpClient: HttpClient) { }
 
